@@ -1,0 +1,225 @@
+.app,.container{
+    height:1185px;
+    overflow:hidden;
+}
+/* 背景 */
+.back-bg{
+    width:100%;
+    position:relative;
+}
+.back-bg .round-bg{
+    width: 100%;
+    height: 247px;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    background: linear-gradient(244.96deg, #A5D7FF -2.97%, #50B0FD 60%);
+    position:absolute;
+    /* left: -39px; */
+    top: 0px;
+}
+/* 顶部栏 */
+.top-box{
+    padding-top:57px;
+    z-index:1000;
+}
+.top-box .top-left{
+    display:flex;
+}
+.top-box .back-logo{
+    box-sizing: border-box;
+    position:relative;
+}
+.top-box .top-left a{
+    display:inline-block;
+    display:flex;
+    width:100%;
+    margin-left:23px;
+    z-index:1000;
+}
+.top-box .top-left .back-logo{
+    width:20px;
+    height:28px;
+    line-height:28px;
+}
+.top-box .top-left .menu-name{
+    width:100%;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    color: #FFFFFF;
+    text-align:center;
+    margin-left:-28px;
+    z-index:1000;
+}
+.top-box .top-left .menu-name div{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    color: #FFFFFF;
+}
+.top-box .back-logo .bi-chevron-left{
+    transform:translate(-50%,-50%);
+    transform: matrix(1, 0, 0, -1, 0, 0);
+}
+/* 预约按钮 */
+.btn{
+    width:100%;
+    height:30px;
+    margin:50px auto;
+    margin-bottom:0px;
+}
+.btn a{
+    display:inline-block;
+    width:80%;
+    height:100%;
+}
+.btn button{
+    display:inline-block;
+    background: linear-gradient(180deg, #7CE0FF 0%, #4DA9FF 100%);
+    border-radius: 110px;
+    box-sizing: border-box;
+    width:100%;
+    height:30px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    color: #FFFFFF;
+}
+/* 表单 */
+.tool{
+    width: 80%;
+    height: 950px;
+    background: #FFFFFF;
+    box-shadow: 2px 0px 14px rgba(27, 62, 90, 0.33);
+    border-radius: 10px;
+    position:absolute;
+    left:50%;
+    transform:translate(-50%);
+    overflow:hidden;
+}
+.tool form{
+    margin:30px 0 0 37px;
+}
+.tool .form-group{
+    margin-bottom:14px;
+    display:flex;
+    flex-direction:column;
+}
+.tool .form-group label{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #898989;
+    margin-bottom:8px;
+}
+.tool .form-group input{
+    background: #FFFFFF;
+    border: 1px solid #BABABA;
+    box-sizing: border-box;
+    border-radius: 4px;
+    height:23px;
+    width:90%;
+    /* margin:8px 0 0 0; */
+}
+.tool .form-group .res-list,.tool .form-group .use-list{
+    display:inline-block;
+    width:90%;
+    height:100%;
+}
+.tool .form-group .res-list li{
+    float:left;
+    width:75px;
+    height:23px;
+    line-height:23px;
+    text-align:center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    color: #4B4B4B;
+    background: #F6F6F6;
+    border: 1px solid #BABABA;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin:0 23px 8px 0px;
+}
+.tool .form-group .res-list li:nth-child(1){
+    margin-left:0px;
+}
+.tool .form-group .use-list li{
+    float:left;
+    width:130px;
+    height:23px;
+    line-height:23px;
+    text-align:center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    color: #4B4B4B;
+    background: #F6F6F6;
+    border: 1px solid #BABABA;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin:0 23px 8px 0px;
+}
+.tool .form-group .use-list li:nth-child(1){
+    margin-left:0px;
+}
+.tool .form-group .instruction{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #898989;
+    margin-bottom:0;
+}
+.tool .form-group .text{
+    width: 90%;
+    height: 124px;
+    margin-top:8px;
+    background: #F5F5F5;
+    /* box-shadow: 11px 11px 23px rgba(0, 0, 0, 0.25); */
+    border: 1px solid #BABABA;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+/* .tool .form-group .text-content{
+    position:relative;
+}
+.tool .text-content .bi-pencil-square{
+    position:absolute;
+    right:16px;
+    bottom:17px;
+} */
+@media (max-width: 440.98px){
+    .tool .form-group .use-list li{
+        float:left;
+        width:100px;
+        height:23px;
+        line-height:23px;
+        text-align:center;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        color: #4B4B4B;
+        background: #F6F6F6;
+        border: 1px solid #BABABA;
+        box-sizing: border-box;
+        border-radius: 4px;
+        margin:0 23px 8px 0px;
+    }
+    .tool .form-group .use-list li:nth-child(1){
+        margin-left:0px;
+    }
+}

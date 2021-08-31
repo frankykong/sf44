@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+{% block header %}
+{#    <script src="{{ asset('Command/jQuery/index.js') }}"></script>#}
+{% endblock %}
+
+<div class="tap-div">
+    <div class="tap-index">
+        <!-- 头部 -->
+        <div class="index-top-logo">
+            <img src="Command/images/Frame 181.png" alt="">
+        </div>
+        <div class="index-top">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="29" fill="#898989" class="bi bi-chat-square-dots" viewBox="0 0 16 16">
+                <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#B5B5B5" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <input type="text" placeholder="Search">
+                <!-- a标签影响汉堡包按钮位置 -->
+                <a class="navbar-brand" href="#"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- 下拉菜单内容 -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 home-nav">
+                        <li class="nav-item nav-item-show active">
+                            <a class="nav-link active" href="{{ path('homepage') }}">首页</a>
+                        </li>
+                        <!-- <li class="nav-item nav-item-show">
+                            <a class="nav-link active" href="./workshow.html">作品</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ path('equipmentList') }}">设备浏览</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ path('labLists') }}">场地浏览</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ path('projectLists') }}">项目浏览</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link active" href="{{ path('worksList') }}">作品展示</a>
+                        </li>
+                        <li class="nav-item nav-item-show">
+                            <a class="nav-link active" href="{{ path('my') }}">我的</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- 轮播图 1 -->
+        <div id="carouselExampleIndicators" class="carousel slide carousel-top" data-ride="carousel">
+            <ol class="carousel-indicators Indicator">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner carousel-top-list">
+                <div class="carousel-item active">
+                    <img src="Command/image/01.webp" alt="">
+                </div>
+                <div class="carousel-item">
+                    <img src="Command/image/02.webp" alt="">
+                </div>
+                <div class="carousel-item">
+                    <img src="Command/image/03.webp" alt="">
+                </div>
+            </div>
+        </div>
+        <!-- 轮播图 2-->
+        <div class="swiper-container carousel">
+            <div class="interval-name">场地设施</div>
+            <ul class="swiper-wrapper carousel-list">
+                {% for post in posts %}
+                <a href="{{ path('labDetail',{ 'id': post.id }) }}" class="swiper-slide">
+                    <li>
+                        <div class="carousel-image">
+                            <img src="{{ asset(post.Img) }}" alt="">
+                        </div>
+                        <div class="carousel-txt">
+                            <div class="txt-name">
+                                <div class="txt-name-det">{{ post.title }}</div>
+                            </div>
+                            <div class="txt-info">
+                                <div class="txt-det">
+                                    <div class="txt-time">{% if post.time %}{{ post.time|date('Y-m-d') }}{% endif %}</div>
+                                    <span>|</span>
+                                    <div class="txt-use">{{ post.sketch }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </a>
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- 列表 -->
+        <div class="list list-top">
+            <div class="interval-name">设备</div>
+            <ul class="list-list" >
+                {% for devices in devices %}
+                    <a href="{{ path('equipmentDetail',{ 'id': devices.id }) }}">
+                        <li>
+                            <div class="list-img">
+                                <img src="{{ asset(devices.deviceImage) }}" alt="">
+                            </div>
+                            <div class="list-txt">
+                                <div class="list-txt-info">
+                                    <div class="list-txt-name">{{ devices.deviceTitle }}</div>
+                                    <div class="list-txt-model">{{ devices.deviceContent }}</div>
+                                </div>
+                                <div class="list-love">
+                                    可租借余数：{{ devices.deviceStatus }}
+                                </div>
+                            </div>
+                        </li>
+                    </a>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!-- <div class="tap-project"></div>
+    <div class="tap-work"></div> -->
+</div>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body%}
+
+    {% block stylesheets %}
+        <link href="{{ asset('/Command/css/admin_login.css') }}" rel="stylesheet" />
+    {% endblock %}
+
+{#<form action="{{ path('login') }}" method="post">#}
+{#    <label for="username">Username:</label>#}
+{#    <input type="text" id="username" name="_username" value="{{ last_username }}" />#}
+
+{#    <label for="password">Password:</label>#}
+{#    <input type="password" id="password" name="_password" />#}
+
+
+
+    {#    <button type="submit">login</button>#}
+{#    <input type="hidden" name="_target_path" value="/post/" />#}
+
+{#</form>#}
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>咸鱼后台管理</title>
+
+    </head>
+    <body>
+    <div class="admin_login_wrap">
+        <h1>后台管理</h1>
+        <div class="adming_login_border">
+            <div class="admin_input">
+                <form action="{{ path('login') }}" method="post">
+                    <ul class="admin_items">
+                        <li>
+                            <label for="username">用户名：</label>
+                            <input type="text" name="_username" value="{{ last_username }}" id="username" size="40" class="admin_input_style" />
+                        </li>
+                        <li>
+                            <label for="password">密码：</label>
+                            <input type="password" name="_password"  id="password" size="40" class="admin_input_style" />
+                        </li>
+                        <li>
+                            <input type="submit" tabindex="3" value="提交" class="btn btn-primary" />
+                        </li>
+                    </ul>
+                    {% if error %}
+                        <div>{{ error.messageKey|trans(error.messageData, 'user') }}</div>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+{#         <p class="admin_copyright"><a tabindex="5"  target="_blank">返回首页</a> </p>#}
+    </div>
+    </body>
+    </html>
+
+{% endblock %}

@@ -1,0 +1,262 @@
+.app{
+    overflow:hidden;
+}
+/* 顶部背景 */
+.back-bg{
+    width:100%;
+    position:relative;
+}
+.back-bg .round-bg{
+    width: 318px;
+    height: 318px;
+    border-radius:50%;
+    background: linear-gradient(244.96deg, #A5D7FF -2.97%, #50B0FD 60%);
+    box-shadow: 5px 5px 13px rgba(80, 176, 253, 0.39);
+    position:absolute;
+    left: -82px;
+    top: -100px;
+}
+.back-bg .round-min{
+    width: 59px;
+    height: 59px;
+    border-radius:50%;
+    background: linear-gradient(180deg, #7CE0FF 0%, #4DA9FF 100%);
+    box-shadow: -3px 5px 13px rgba(80, 176, 253, 0.39);
+    position:absolute;
+    left: 285px;
+    top: -15px;
+}
+.back-bg .round-sm{
+    width: 27px;
+    height: 27px;
+    border-radius:50%;
+    background: linear-gradient(180deg, #7CE0FF 0%, #4DA9FF 100%);
+    box-shadow: -3px 5px 13px rgba(80, 176, 253, 0.39);
+    position:absolute;
+    left: 258px;
+    top: 92px;
+}
+/* 顶部栏 */
+.top-box{
+    display:inline-block;
+    height:28px;
+    box-sizing: border-box;
+    display:flex;
+    /* transform:translateY(58px); */
+    margin-top:58px;
+}
+.top-box .navbar{
+    padding:0;
+    position:relative;
+}
+.top-box .bg-light{
+    background-color:transparent !important;
+}
+.top-box .top-left{
+    display:flex;
+    width:40%;
+}
+.top-box .top-left a{
+    display:inline-block;
+    width:20px;
+    margin-left:23px;
+}
+.top-box .top-left .menu-name{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    margin-left:20px;
+    color: #FFFFFF;
+}
+.top-box .top-left .bi-chevron-left{
+    position:relative;
+    top:50%;
+    transform:translateY(-50%)
+}
+.top-box .navbar{
+    padding:0;
+    width:100%;
+}
+.top-box .navbar-toggler{
+    padding:0;
+    height:30px;
+    position:absolute;
+    right:16px;
+}
+.top-box .navbar .navbar-collapse,.top-box .navbar .collapse{
+    background-color:white;
+    width:100%;
+    z-index:1000;
+}
+/* 项目列表 */
+.tool{
+    width: 80%;
+    height: 950px;
+    margin:34px auto; 
+    margin-bottom:0px;
+    background: #FFFFFF;
+    /* box-shadow: 0px 4px 12px 1px rgba(0, 0, 0, 0.25); */
+    overflow:hidden;
+}
+/* .tool .interval-name{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    color: #4B4B4B;
+    background-color:#F5F5F5;
+    padding-bottom:10px;
+} */
+.tool .tool-list{
+    border-radius: 10px;
+    overflow:hidden;
+    box-shadow: 0px 4px 12px 1px rgba(0, 0, 0, 0.25);
+}
+.tool .tool-list li{
+    width:100%;
+    height:114px;
+    display:flex;
+    position:relative;
+    background-color: #FFFFFF;
+}
+/* .tool .tool-list li:after{
+    display:inline-block;
+    content:"";
+    width:94%;
+    height:1px;
+    background-color:#E3E3E3;
+    position:absolute;
+    bottom:0px;
+    left:50%;
+    transform:translate(-50%);
+} */
+.tool .tool-list li:nth-child(1){
+    margin-top:0px;
+}
+.tool .tool-list li .tool-img{
+    width:80px;
+    height:80px;
+    transform:translate(18px,20px);
+}
+.tool .tool-list li .tool-img img{
+    width:100%;
+    height:100%;
+}
+.tool .tool-list li .tool-txt{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    width:calc(100% - 80px - 18px - 10px); 
+    transform:translate(21px);
+}
+.tool .tool-list li .tool-txt .tool-txt-info{
+    margin:58px 0 0 10px;
+}
+.tool .tool-list li .tool-txt .tool-txt-info .tool-txt-name{
+    font-family: Fira Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #4B4B4B;
+}
+.tool .tool-list li .tool-txt .tool-txt-info .tool-txt-model{
+    font-family: Fira Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: #898989;
+    margin-top:9px;
+}
+.tool .tool-list li .tool-txt .tool-love{
+    width:100%;
+    position:relative;
+    font-family: Fira Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+    color: #50B0FD;
+    margin-bottom:12px;
+}
+.navbar-collapse .navbar-nav{
+    display: flex;
+    position:relative;
+    z-index:1000;
+}
+.navbar-collapse .navbar-nav .bi-bell{
+    position:absolute;
+    right:-30px;
+    top: 10px;
+}
+.navbar-collapse .navbar-nav .nav-item,
+.collapse .navbar-nav .nav-item{
+    display:inline-block;
+    float:left;
+    width:50%;
+    height:50px;
+    line-height:50px;
+    text-align:center;
+    /* margin-bottom:5px; */
+}
+.navbar-collapse .navbar-nav .nav-item:nth-last-child(1),
+.collapse .navbar-nav .nav-item:nth-last-child(1),.navbar-collapse .navbar-nav .nav-item:nth-last-child(2),
+.collapse .navbar-nav .nav-item:nth-last-child(2){
+    margin-bottom:0px;
+}
+.collapse .navbar-nav .nav-item,.navbar-collapse .navbar-nav .nav-item{
+    background-color:#FFFFFF;
+}
+.collapse .navbar-nav .nav-item.active,.navbar-collapse .navbar-nav .nav-item.active{
+    background-color:#50B0FD;
+}
+.collapse .navbar-nav .nav-item.active a,.navbar-collapse .navbar-nav .nav-item.active a{
+    color:#FFFFFF;
+}
+.collapse .navbar-nav .nav-item .nav-link{
+    padding:0;
+    font-family: Fira Sans;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #3C3C3C;
+}
+.navbar-collapse .mb-2,.collapse .my-2,
+.collapse .mb-2,.collapse .my-2{
+    margin-bottom:0 !important;
+}
+.container, .container-fluid, .container-sm, .container-md, .container-lg, .container-xl{
+    padding-left:0px;
+    padding-right:0px;
+}
+@media (min-width: 991.98px){
+    .collapse, .navbar-collapse{
+        margin:0px !important;
+    }
+    .navbar{
+        width:100%;
+        display:flex;
+        justify-content:flex-end;
+    }
+    .navbar .navbar-toggler,.navbar .navbar-brand{
+        display:none;
+    }
+    .navbar .collapse,.navbar-collapse{
+        width:calc(100% - 230px);
+        float:right;
+    }
+    .navbar .collapse .navbar-nav,.navbar .navbar-collapse .navbar-nav{
+        display:inline-block;
+        position:absolute;
+        right:20px;
+    }
+    .navbar-collapse .navbar-nav{
+        display: flex;
+        position:relative;
+        right:40px;
+    }
+}

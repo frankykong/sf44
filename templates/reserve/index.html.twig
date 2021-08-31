@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Reserves list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Reservename</th>
+                <th>Reserveemail</th>
+                <th>Reservephone</th>
+                <th>Reservenumber</th>
+                <th>Reserveteacher</th>
+                <th>Reserveclass</th>
+                <th>Reservedate</th>
+                <th>Reservetime</th>
+                <th>Reservecontent</th>
+                <th>Reservestatus</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reserve in reserves %}
+            <tr>
+                <td><a href="{{ path('reserve_show', { 'id': reserve.id }) }}">{{ reserve.id }}</a></td>
+                <td>{{ reserve.reserveName }}</td>
+                <td>{{ reserve.reserveEmail }}</td>
+                <td>{{ reserve.reservePhone }}</td>
+                <td>{{ reserve.reserveNumber }}</td>
+                <td>{{ reserve.reserveTeacher }}</td>
+                <td>{{ reserve.reserveClass }}</td>
+                <td>{% if reserve.reserveDate %}{{ reserve.reserveDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ reserve.reserveTime }}</td>
+                <td>{{ reserve.reserveContent }}</td>
+                <td>{{ reserve.reserveStatus }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('reserve_show', { 'id': reserve.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('reserve_edit', { 'id': reserve.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('reserve_new') }}">Create a new reserve</a>
+        </li>
+    </ul>
+{% endblock %}

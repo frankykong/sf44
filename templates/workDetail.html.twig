@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% block header %}
+    {% endblock %}
+    <style>
+        .list.lab-com{
+            margin-top: 30px;
+        }
+    </style>
+    <div class="back-bg">
+        <div class="round-bg"></div>
+        <div class="round-min"></div>
+        <div class="round-sm"></div>
+    </div>
+    <div class="top-box">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="top-left lab-top-left">
+                <a href="{{ path('homepage') }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#FFFFFF" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                    </svg>
+                </a>
+                <div class="menu-name lab-text">项目</div>
+        </nav>
+    </div>
+    <div class="list lab-com lab-com-work">
+        <div class="list-name text-name">{{ workData.userTitle }}</div>
+        <div class="list-info writer">作者：{{ workData.userName }}
+            <div>
+                {{ workData.userContent }}
+            </div>
+            <div class="info-img">
+                <img src="{{ asset(workData.userImg) }}" alt="">
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

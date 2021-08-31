@@ -1,0 +1,166 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% block stylesheets %}
+        <link href="{{ asset('/Command/css/admin_login.css') }}" rel="stylesheet" />
+        <link href="{{ asset('/Command/css/common.css') }}" rel="stylesheet" />
+        <link href="{{ asset('/Command/css/main.css') }}" rel="stylesheet" />
+    {% endblock %}
+{#    <h1>Works list</h1>#}
+
+{#    <table>#}
+{#        <thead>#}
+{#            <tr>#}
+{#                <th>Id</th>#}
+{#                <th>Username</th>#}
+{#                <th>Usertitle</th>#}
+{#                <th>Usersketch</th>#}
+{#                <th>Userimg</th>#}
+{#                <th>Usercontent</th>#}
+{#                <th>Usertime</th>#}
+{#                <th>Actions</th>#}
+{#            </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#        {% for work in works %}#}
+{#            <tr>#}
+{#                <td><a href="{{ path('works_show', { 'id': work.id }) }}">{{ work.id }}</a></td>#}
+{#                <td>{{ work.userName }}</td>#}
+{#                <td>{{ work.userTitle }}</td>#}
+{#                <td>{{ work.userSketch }}</td>#}
+{#                <td><img style="width: 100px" height="100px" src={{ asset(work.userImg) }}/></td>#}
+{#                <td>{{ work.userContent }}</td>#}
+{#                <td>{% if work.userTime %}{{ work.userTime|date('Y-m-d H:i:s') }}{% endif %}</td>#}
+{#                <td>#}
+{#                    <ul>#}
+{#                        <li>#}
+{#                            <a href="{{ path('works_show', { 'id': work.id }) }}">show</a>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <a href="{{ path('works_edit', { 'id': work.id }) }}">edit</a>#}
+{#                        </li>#}
+{#                    </ul>#}
+{#                </td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
+
+{#    <ul>#}
+{#        <li>#}
+{#            <a href="{{ path('works_new') }}">Create a new work</a>#}
+{#        </li>#}
+{#    </ul>#}
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>咸鱼后台管理</title>
+    </head>
+    <body>
+    <div class="topbar-wrap white">
+        <div class="topbar-inner clearfix">
+            <div class="topbar-logo-wrap clearfix">
+                <h1 class="topbar-logo none"><a href="index.html" class="navbar-brand">后台管理</a></h1>
+                <ul class="navbar-list clearfix">
+                    <li><a class="on" href="index.html">首页</a></li>
+                    <li><a href="http://www.mycodes.net/" target="_blank">网站首页</a></li>
+                </ul>
+            </div>
+            <div class="top-info-wrap">
+                <ul class="top-info-list clearfix">
+                    <li><a href="#">管理员</a></li>
+                    <li><a href="#">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container clearfix">
+        <div class="sidebar-wrap">
+            <div class="sidebar-title">
+                <h1>菜单</h1>
+            </div>
+            <div class="sidebar-content">
+                <ul class="sidebar-list">
+                    <li>
+                        <a href="#"><i class="icon-font">&#xe003;</i>常用操作</a>
+                        <ul class="sub-menu">
+                            <li><a href="{{ path('post_index') }}"><i class="icon-font">&#xe008;</i>设备管理</a></li>
+                            <li><a href="#"><i class="icon-font">&#xe005;</i>作品管理</a></li>
+                            <li><a href=""><i class="icon-font">&#xe006;</i>场地预约</a></li>
+                            <li><a href=""><i class="icon-font">&#xe004;</i>设备预约</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-font">&#xe018;</i>系统管理</a>
+                        <ul class="sub-menu">
+
+                            <li><a href="system.html"><i class="icon-font">&#xe037;</i>清理缓存</a></li>
+                            <li><a href="system.html"><i class="icon-font">&#xe046;</i>数据备份</a></li>
+                            <li><a href="system.html"><i class="icon-font">&#xe045;</i>数据还原</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--/sidebar-->
+        <div class="main-wrap">
+
+            <div class="crumb-wrap">
+                <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">作品管理</span></div>
+            </div>
+
+            <div class="result-wrap">
+                <form name="myform" id="myform" method="post">
+                    <div class="result-title">
+                        <div class="result-list">
+                            <a href="{{ path('works_new') }}"><i class="icon-font"></i>新增作品</a>
+                            {#<a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>#}
+                            {#<a id="updateOrd" href="javascript:void(0)"><i class="icon-font"></i>更新排序</a>#}
+                        </div>
+                    </div>
+                    <div class="result-content">
+                        <table class="result-tab" width="100%">
+                            <tr>
+
+                                <th style="width: 50px;text-align: center">ID</th>
+                                <th>作者</th>
+                                <th>说明</th>
+                                <th>简介</th>
+                                <th>详细内容</th>
+                                <th>图片</th>
+                                <th>更新时间</th>
+                                <th style="width: 50px">操作</th>
+                            </tr>
+                            {% for work in works %}
+                                <tr>
+                                    <td style="text-align: center"><a href="{{ path('works_show', { 'id': work.id }) }}">{{ work.id }}</a></td>
+                                    <td>{{ work.userName }}</td>
+                                    <td>{{ work.userTitle }}</td>
+                                    <td>{{ work.userSketch }}</td>
+                                    <td>{{ work.userContent }}</td>
+                                    <td><img style="width: 100px" height="100px" src={{ asset(work.userImg) }}/></td>
+                                    <td>{% if work.userTime %}{{ work.usertime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                    <td>
+                                        <ul>
+                                            <li>
+                                                <a href="{{ path('works_show', { 'id': work.id }) }}">show</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('works_edit', { 'id': work.id }) }}">修改</a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
+                        </table>
+                        <div class="list-page"> 6 条 1/1 页</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/main-->
+    </div>
+    </body>
+    </html>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Reserve</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reserve.id }}</td>
+            </tr>
+            <tr>
+                <th>Reservename</th>
+                <td>{{ reserve.reserveName }}</td>
+            </tr>
+            <tr>
+                <th>Reserveemail</th>
+                <td>{{ reserve.reserveEmail }}</td>
+            </tr>
+            <tr>
+                <th>Reservephone</th>
+                <td>{{ reserve.reservePhone }}</td>
+            </tr>
+            <tr>
+                <th>Reservenumber</th>
+                <td>{{ reserve.reserveNumber }}</td>
+            </tr>
+            <tr>
+                <th>Reserveteacher</th>
+                <td>{{ reserve.reserveTeacher }}</td>
+            </tr>
+            <tr>
+                <th>Reserveclass</th>
+                <td>{{ reserve.reserveClass }}</td>
+            </tr>
+            <tr>
+                <th>Reservedate</th>
+                <td>{% if reserve.reserveDate %}{{ reserve.reserveDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Reservetime</th>
+                <td>{{ reserve.reserveTime }}</td>
+            </tr>
+            <tr>
+                <th>Reservecontent</th>
+                <td>{{ reserve.reserveContent }}</td>
+            </tr>
+            <tr>
+                <th>Reservestatus</th>
+                <td>{{ reserve.reserveStatus }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('reserve_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('reserve_edit', { 'id': reserve.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Work</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ work.id }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ work.userName }}</td>
+            </tr>
+            <tr>
+                <th>Usertitle</th>
+                <td>{{ work.userTitle }}</td>
+            </tr>
+            <tr>
+                <th>Usersketch</th>
+                <td>{{ work.userSketch }}</td>
+            </tr>
+            <tr>
+                <th>Userimg</th>
+                <td><img src={{ asset(work.userImg) }}/></td>
+
+            </tr>
+            <tr>
+                <th>Usercontent</th>
+                <td>{{ work.userContent }}</td>
+            </tr>
+            <tr>
+                <th>Usertime</th>
+                <td>{% if work.userTime %}{{ work.userTime|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('works_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('works_edit', { 'id': work.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

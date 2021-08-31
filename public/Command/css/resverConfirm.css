@@ -1,0 +1,156 @@
+.app,.container{
+    height:100%;
+    /* overflow:hidden; */
+}
+/* 背景 */
+.back-bg{
+    width:100%;
+    position:relative;
+}
+.back-bg .round-bg{
+    width: 100%;
+    height: 247px;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    background: linear-gradient(244.96deg, #A5D7FF -2.97%, #50B0FD 60%);
+    position:absolute;
+    /* left: -39px; */
+    top: 0px;
+}
+/* 顶部栏 */
+.top-box{
+    padding-top:57px;
+    z-index:1000;
+}
+.top-box .top-left{
+    display:flex;
+}
+.top-box .back-logo{
+    box-sizing: border-box;
+    position:relative;
+}
+.top-box .top-left a{
+    display:inline-block;
+    display:flex;
+    width:100%;
+    margin-left:23px;
+    z-index:1000;
+}
+.top-box .top-left .back-logo{
+    width:20px;
+    height:28px;
+    line-height:28px;
+}
+.top-box .top-left .menu-name{
+    width:100%;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    color: #FFFFFF;
+    text-align:center;
+    margin-left:-28px;
+    z-index:1000;
+}
+.top-box .top-left .menu-name div{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    color: #FFFFFF;
+}
+.top-box .back-logo .bi-chevron-left{
+    transform:translate(-50%,-50%);
+    transform: matrix(1, 0, 0, -1, 0, 0);
+}
+/* 列表 */
+.tool{
+    width: 80%;
+    height: calc(100% - 108px - 94px - 21px);
+    background: #FFFFFF;
+    box-shadow: 2px 0px 14px rgba(27, 62, 90, 0.33);
+    border-radius: 10px;
+    position:absolute;
+    left:50%;
+    transform:translate(-50%);
+    overflow:hidden;
+}
+.tool .tool-box{
+    width:90%;
+    display:flex;
+    flex-direction:column;
+    margin:0 auto;
+    margin-top:70px;
+}
+.tool .tool-box .tool-logo{
+    margin:0 auto;
+}
+.tool .tool-box .tool-info{
+    display:flex;
+    flex-direction:column;
+    margin-top:16px;
+}
+.tool .tool-box .tool-info div{
+    margin:0 auto;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    color: #50B0FD;
+}
+.tool .tool-box .tool-info .info-hint{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    color: #50B0FD;
+}
+.tool .tool-box .tool-link{
+    margin-top:93px;
+    display:flex;
+}
+.tool .tool-box .tool-link a{
+    display:inline-block;
+    display:flex;
+    margin:0 auto;
+    text-decoration: underline;
+}
+.tool .tool-box .tool-link .link-name{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    color: #4B4B4B;
+    margin-left:5px;
+}
+
+.btn{
+    width:100%;
+    height:30px;
+    margin:156px auto;
+    margin-bottom:0px;
+}
+.btn a{
+    display:inline-block;
+    width:80%;
+    height:100%;
+}
+.btn button{
+    display:inline-block;
+    background: linear-gradient(180deg, #7CE0FF 0%, #4DA9FF 100%);
+    border-radius: 110px;
+    box-sizing: border-box;
+    width:100%;
+    height:30px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    color: #FFFFFF;
+}

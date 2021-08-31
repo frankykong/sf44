@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Post</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ post.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ post.title }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ post.content }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ post.status }}</td>
+            </tr>
+            <tr>
+                <th>Sketch</th>
+                <td>{{ post.sketch }}</td>
+            </tr>
+            <tr>
+                <th>Img</th>
+                <td><img src={{ asset(post.Img) }}/></td>
+            </tr>
+            <tr>
+                <th>Time</th>
+                <td>{% if post.time %}{{ post.time|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('post_index') }}">回到列表</a>
+        </li>
+        <li>
+            <a href="{{ path('post_edit', { 'id': post.id }) }}">修改</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="删除">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

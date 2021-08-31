@@ -1,0 +1,191 @@
+/* 顶部栏 */
+.top-box{
+    padding-top:64px;
+    z-index:1000;
+}
+.top-box .top-left{
+    display:flex;
+}
+.top-box .back-logo{
+    box-sizing: border-box;
+    position:relative;
+}
+.top-box .top-left a{
+    display:inline-block;
+    width:20px;
+    height:20px;
+    margin-left:23px;
+    z-index:1000;
+}
+.top-box .back-logo .bi-chevron-left{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    transform: matrix(1, 0, 0, -1, 0, 0);
+}
+/* 背景轮播图 */
+.carousel{
+    width:100%;
+    height:315px;
+    margin-bottom:0px;
+    overflow:hidden;
+    position:absolute;
+    top:0px;
+}
+.carousel .carousel-list{
+    width:1440px;
+    height:100%;
+}
+.carousel .carousel-list li{
+    width:100%;
+    height:100%;
+}
+.carousel .carousel-list li img{
+    width:100%;
+    height:100%;
+}
+.carousel .Indicator-list{
+    position:absolute;
+    bottom:40px;
+    left:50%;
+    transform:translate(-50%);
+}
+.carousel .Indicator-list li{
+    width:8px;
+    height:8px;
+    background-color:#6A6A6A;
+    border-radius:50%;
+    float:left;
+    margin:0 1px;
+    box-sizing:b
+}
+.carousel .Indicator-list li:nth-child(1){
+    margin-left:0;
+}
+.carousel .Indicator-list li:nth-last-child(1){
+    margin-right:0;
+}
+.carousel .Indicator-list li.active{
+    width:9px;
+    height:9px;
+    border: 1px solid #6A6A6A;
+    box-sizing: border-box;
+    background-color:#BDBDBD;
+}
+/* 信息 */
+.instruction{
+    display: inline-block;
+    display:flex;
+    flex-direction:column;
+    margin-top:231px;
+    width:100%;
+    height:100%;
+    min-height:500px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 20px 20px 0px 0px;
+    transform:translateY(-23px);
+}
+.instruction .instruction-name{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #4B4B4B;
+    margin:36px 0 0 23px;
+}
+.instruction .instruction-content{
+    margin:14px 0 0 23px;
+}
+.instruction .instruction-content .content-txt{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 18px;
+    color: #898989;
+}
+.instruction .instruction-content .content-btn{
+    display:inline-block;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 130.69%;
+    color: #50B0FD;
+}
+.instruction .instruction-use{
+    margin:42px 0 0 23px;
+    display:inline-block;
+    display:flex;
+    flex-direction:column;
+}
+.instruction .instruction-use .use-content div{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 18px;
+    color: #4B4B4B;
+}
+.instruction .instruction-use .use-content .res-sta{
+    display:inline-block;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 18px;
+    color: #50B0FD;
+}
+.instruction .instruction-use .use-content .use{
+    margin-top:13px;
+}
+.instruction .instruction-use .use-content .res{
+    margin-top:7px;
+}
+.instruction .instruction-use .use-content .experimenter{
+    margin-top:10px;
+}
+.btn{
+    width:80%;
+    height:30px;
+    margin:37px auto;
+    margin-bottom:0px;
+}
+.btn a{
+    display:inline-block;
+    width:100%;
+    height:100%;
+}
+.btn button{
+    display:inline-block;
+    background: linear-gradient(180deg, #7CE0FF 0%, #4DA9FF 100%);
+    border-radius: 110px;
+    box-sizing: border-box;
+    width:100%;
+    height:30px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    color: #FFFFFF;
+}
+.container, .container-fluid, .container-sm, .container-md, .container-lg, .container-xl{
+    padding:0px;
+}
+@media (min-width: 991.98px){
+    /* .carousel{
+        width:720px;
+    } */
+    /* .carousel .carousel-list li{
+        width:720px;
+        height:260px;
+    } */
+    .carousel .carousel-list li img{
+        width:100%;
+        height:100%;
+    }
+}

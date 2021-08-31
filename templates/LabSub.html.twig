@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+{% block header %}
+{% endblock %}
+            <div class="back-bg">
+                <div class="lab-bg"></div>
+            </div>
+            <div class="top-box">
+                <div class="top-left top">
+                    <a href="{{ path('homepage') }}">
+                        <div class="back-logo">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#FFFFFF" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                            </svg>
+                        </div>
+                        <div class="menu-name">1号楼101实验室
+                            <div>场地预约</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="list lab-com">
+                <div class="list-box">
+                    <div class="list-logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="94" height="94" fill="#50B0FD" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                          </svg>
+                    </div>
+                    <div class="list-info">
+                        <div class="info-hint">预约信息已提交</div>
+                    </div>
+                </div>
+                <div class="btn lab-btn">
+                    <a href="{{ path('homepage') }}">
+                        <button>确定</button>
+                    </a>
+                </div>
+            </div>
+{% endblock %}

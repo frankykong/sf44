@@ -1,0 +1,276 @@
+.app{
+    overflow:hidden;
+}
+/* 顶部背景 */
+.back-bg{
+    width:100%;
+    position:relative;
+}
+.back-bg .round-bg{
+    width: 318px;
+    height: 318px;
+    border-radius:50%;
+    background: linear-gradient(244.96deg, #A5D7FF -2.97%, #50B0FD 60%);
+    box-shadow: 5px 5px 13px rgba(80, 176, 253, 0.39);
+    position:absolute;
+    left: -82px;
+    top: -100px;
+}
+.back-bg .round-min{
+    width: 59px;
+    height: 59px;
+    border-radius:50%;
+    background: linear-gradient(180deg, #7CE0FF 0%, #4DA9FF 100%);
+    box-shadow: -3px 5px 13px rgba(80, 176, 253, 0.39);
+    position:absolute;
+    left: 285px;
+    top: -15px;
+}
+.back-bg .round-sm{
+    width: 27px;
+    height: 27px;
+    border-radius:50%;
+    background: linear-gradient(180deg, #7CE0FF 0%, #4DA9FF 100%);
+    box-shadow: -3px 5px 13px rgba(80, 176, 253, 0.39);
+    position:absolute;
+    left: 258px;
+    top: 92px;
+}
+/* 底部按钮 */
+.bottom-tap{
+    width:100%;
+    height:84px;
+    display: flex;
+    box-sizing: border-box;
+    justify-content:space-around;
+    position: absolute;
+    bottom: 0;
+    background: #F5F5F5;
+    box-shadow: 0px 0px 0px 0px;
+}
+.bottom-tap a{
+    display:inline-block;
+    width:80%;
+}
+.bottom-tap .btn-bot{
+    display:block;
+    width:55%;
+    height:54px;
+    background: linear-gradient(180deg, #7CE0FF 0%, #4DA9FF 100%);
+    border-radius: 110px;
+    margin: 7px auto;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 26px;
+    float:left;
+    color: #FFFFFF;
+}
+.bottom-tap button:nth-child(2){
+    display:block;
+    width:35%;
+    height:54px;
+    background: linear-gradient(180deg, #FFA0A3 0%, #FF8084 46.35%, #FF5A5F 100%);
+    border-radius: 110px;
+    margin-left:5%;
+}
+/* 顶部栏 */
+.top-box{
+    display:inline-block;
+    height:28px;
+    box-sizing: border-box;
+    display:flex;
+    /* transform:translateY(58px); */
+    margin-top:58px;
+}
+.top-box .navbar{
+    padding:0;
+    position:relative;
+    width:100%;
+}
+.top-box .bg-light{
+    background-color:transparent !important;
+}
+.top-box .top-left{
+    display:flex;
+    width:40%;
+}
+.top-box .top-left a{
+    display:inline-block;
+    width:20px;
+    margin-left:23px;
+}
+.top-box .top-left .menu-name{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    margin-left:20px;
+    color: #FFFFFF;
+}
+.top-box .top-left .bi-chevron-left{
+    position:relative;
+    top:50%;
+    transform:translateY(-50%)
+}
+/* 申请 */
+.LoanReturn{
+    width:80%;
+    height:155px;
+    margin: 0 auto;
+    margin-top:36px;
+    position:relative;
+    background: #FFFFFF;
+    box-shadow: 0px 9px 13px rgba(80, 176, 253, 0.27);
+    border-radius: 10px;
+    display:flex;
+    flex-direction:column;
+}
+.LoanReturn .loan,.LoanReturn .Return{
+    margin: 0 auto;
+    display:flex;
+}
+.LoanReturn .loan{
+    margin-top:27px;
+}
+.LoanReturn .Return{
+    margin-top:42px;
+}
+.LoanReturn .loan div,.LoanReturn .Return div{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: #4B4B4B;
+}
+.LoanReturn .loan div:nth-child(3),.LoanReturn .Return div:nth-child(3){
+    width:120px;
+    word-break:break-all;
+}
+.LoanReturn .loan .loan-time,.LoanReturn .Return .Return-time{
+    width:78px;
+    height:42px;
+}
+.LoanReturn .loan .loan-time div,.LoanReturn .Return .Return-time div{
+    text-align:right;
+}
+.LoanReturn .loan .loan-point,.LoanReturn .Return .Return-point{
+    width:24px;
+    height:24px;
+    border: 2px solid #50B0FD;
+    box-sizing: border-box;
+    border-radius:50%;
+    position:relative;
+    margin:0 14px 0 11px; 
+}
+.LoanReturn .loan .loan-point div,.LoanReturn .Return .Return-point div{
+    width:14px;
+    height:14px;
+    background: #50B0FD;
+    box-sizing: border-box;
+    border-radius:50%;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    display:none;
+}
+.LoanReturn .loan .loan-point div.active,.LoanReturn .Return .Return-point div.active{
+    display:block;
+}
+.LoanReturn span{
+    margin: 0 auto;
+    line-height:42px;
+}
+.LoanReturn span:after{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    margin-left:-24px;
+    content:"";
+    border: 2px dashed #50B0FD;
+    height:42px;
+}
+/* 项目列表 */
+.tool{
+    width: 80%;
+    height: 422px;
+    margin:6px auto; 
+    margin-bottom:0px;
+    background: #FFFFFF;
+    box-shadow: 0px 9px 13px rgba(80, 176, 253, 0.27);
+    border-radius: 10px;
+    overflow:hidden;
+}
+.tool .tool-name{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #4B4B4B;
+    width:70%;
+    margin:0 auto;
+    margin-top:24px;
+}
+.tool .tool-name .tool-info{
+    width:90%;
+    margin:0 auto;
+    margin-top:30px;
+}
+.tool .tool-name .tool-info .info-list{
+    display:flex;
+    margin-bottom:16px;
+}
+.tool .tool-name .tool-info .info-list div{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.015em;
+    color: #898989;
+    display:block;
+}
+.tool .tool-name .tool-info .info-list div:nth-child(1){
+    width:70px;
+}
+.tool .tool-name .tool-info .info-list div:nth-child(2){
+    width:calc(100% - 70px);
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: #4B4B4B;
+    margin-left:20px;
+    word-break:break-all;
+}
+
+
+@media (min-width: 991.98px){
+    /* .navbar{
+        width:100%;
+        display:flex;
+        justify-content:flex-end;
+    } */
+    .navbar .navbar-toggler,.navbar .navbar-brand{
+        display:none;
+    }
+    .navbar .collapse,.navbar-collapse{
+        width:calc(100% - 230px);
+        float:right;
+    }
+    .navbar .collapse .navbar-nav,.navbar .navbar-collapse .navbar-nav{
+        display:inline-block;
+        position:absolute;
+        right:20px;
+    }
+    .navbar-collapse .navbar-nav{
+        display: flex;
+        position:relative;
+        right:40px;
+    }
+}
