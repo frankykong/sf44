@@ -2,19 +2,17 @@
 
 namespace App\Controller;
 
+
+use http\Client\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-//use Doctrine\ORM\Mapping as ORM;
 
-
-//use cocose\WebBundle\Entity\Device;
-//use cocose\WebBundle\Entity\Project;
-//use cocose\WebBundle\Entity\Reserve;
-//use cocose\WebBundle\Entity\Works;
-//use Symfony\Component\HttpFoundation\Request;
-//use cocose\WebBundle\Entity\Post;
-
+use App\Entity\Post;
+use App\Entity\Device;
+use App\Entity\Project;
+use App\Entity\Works;
+use App\Entity\Reserve;
 
 class FrontEndController extends AbstractController
 {
@@ -25,37 +23,23 @@ class FrontEndController extends AbstractController
     public function homepage()
     {
         $em = $this->getDoctrine()->getManager();
-        //dump('$em');
-
         $posts = $em->getRepository('App:Post')->findAll();
-       // $devices = $em->getRepository('AppBundle:Device')->findAll();
-//        //the template path is the relative file path from `templates/`
+        $devices = $em->getRepository('App:Device')->findAll();
+        //the template path is the relative file path from `templates/`
         return $this->render("home.html.twig", array(
-           // 'posts' => $posts,
+            'posts' => $posts,
             'active' => 'home',
-          //  'devices' => $devices
+            'devices' => $devices
         ));
     }
-//
-//    //场地列表
-//    public function  labListAction(){
-//
-//       // $em = $this->getDoctrine()->getManager();
-//        //$posts = $em->getRepository('cocoseWebBundle:Post')->findAll();
-//        //the template path is the relative file path from `templates/`
-//
-//        return $this->render("labList.html.twig", array(
-//           //'post' => $posts
-//            'active' => 'labList',
-//        ));
-//    }
-//
+
+    //场地列表
     /**
      * @Route("/labLists", name="labLists")
      */
     public function  labLists(){
         $em = $this->getDoctrine()->getManager();
-        $labData = $em->getRepository('cocoseWebBundle:Post')->findAll();
+        $labData = $em->getRepository('App:Post')->findAll();
         return $this->render("labLists.html.twig", array(
             'labData'=>$labData,
             'active' => 'labLists'
@@ -68,30 +52,17 @@ class FrontEndController extends AbstractController
 //        ));
 //    }
 
-//    public function  labDetailAction(Request $request,Post $labData){
-//
-//        return $this->render("labDetail.html.twig", array(
-//            'labData' => $labData,
-//            'active' => 'labDetail'
-//        ));
-//    }
+    /**
+     * @Route("/labDetail", name="labDetail")
+     */
+    public function  labDetail(Request $request,Post $labData){
 
-//    public function  labDetailsAction(Request $request){
-//        $reserve = new Reserve();
-//        return $this->render("labDetailsform.html.twig", array(
-//                'active' => ' labDetails',
-//                "reserveName" => json_encode($reserve),
-//                "reserveEmail" => json_encode($reserve),
-//                "reservePhone" => json_encode($reserve),
-//                "reserveNumber" => json_encode($reserve),
-//                "reserveTeacher" => json_encode($reserve),
-//                "reserveClass" => json_encode($reserve),
-//                "reserveContent" => json_encode($reserve),
-//            )
-//        );
-//
-//
-//    }
+        return $this->render("labDetail.html.twig", array(
+            'labData' => $labData,
+            'active' => 'labDetail'
+        ));
+    }
+
 
 //    public function labSubAction(){
 //        return $this->render("labSub.html.twig",array(
@@ -111,82 +82,88 @@ class FrontEndController extends AbstractController
     public function equipmentList()
     {
         $em = $this->getDoctrine()->getManager();
-        $equipmentData = $em->getRepository('cocoseWebBundle:Device')->findAll();
+        $equipmentData = $em->getRepository('App:Device')->findAll();
         return $this->render("equipmentList.html.twig", array(
             'equipmentData'=>$equipmentData,
             'active' => 'equipment'
         ));
     }
-//
-//    //项目列表
-//    public function equipmentDetailAction(Request $request,Device $equipmentData)
-//    {
-//
-//        return $this->render("equipmentDetail.html.twig", array(
-//           'equipmentData'=>$equipmentData,
-//            'active' => 'projectDetail'
-//        ));
-//    }
-//
-//    public function equipmentNoticeAction(){
-//        return $this->render("equipmentNotice.html.twig",array(
-//            'active' => 'equipmentNotice'
-//
-//        ));
-//    }
-//
-//    public function equipmentDetailsAction(Request $request)
-//    {
-//        return $this->render("equipmentDetailsform.html.twig", array(
-//            'active' => 'equipmentDetails'
-//        ));
-//    }
-//
+
+    //项目列表
+    /**
+     * @Route("/equipmentDetail", name="equipmentDetail")
+     */
+    public function equipmentDetail(Request $request,Device $equipmentData)
+    {
+
+        return $this->render("equipmentDetail.html.twig", array(
+           'equipmentData'=>$equipmentData,
+            'active' => 'projectDetail'
+        ));
+    }
+
+    public function equipmentNoticeAction(){
+        return $this->render("equipmentNotice.html.twig",array(
+            'active' => 'equipmentNotice'
+
+        ));
+    }
+
+    public function equipmentDetailsAction(Request $request)
+    {
+        return $this->render("equipmentDetailsform.html.twig", array(
+            'active' => 'equipmentDetails'
+        ));
+    }
+
     /**
      * @Route("/projectLists", name="projectLists")
      */
-    public function projectLists()
+    public function projectLists(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $projectData = $em->getRepository('cocoseWebBundle:Project')->findAll();
+        $projectData = $em->getRepository('App:Project')->findAll();
         return $this->render("projectLists.html.twig", array(
             'projectData'=>$projectData,
             'active' => 'projectLists'
         ));
     }
-//
-//    public function projectDetailsAction(Request $request,Project $projectData)
-//    {
-//
-//        return $this->render("projectDetails.html.twig", array(
-//            'projectData'=>$projectData,
-//            'active' => 'projectDetails',
-//        ));
-//    }
-//
+
+    /**
+     * @Route("/projectDetails", name="projectDetails")
+     */
+    public function projectDetails(Request $request)
+    {
+    }
+
+
+
     //作品列表
     /**
      * @Route("/worksList", name="worksList")
      */
     public function  worksList(){
         $em = $this->getDoctrine()->getManager();
-        $worksData = $em->getRepository('cocoseWebBundle:Works')->findAll();
+        $worksData = $em->getRepository('App:Works')->findAll();
         dump($worksData);
         return $this->render("worksList.html.twig", array(
             'worksData'=>$worksData,
             'active' => 'worksList'
         ));
     }
-//
-//    //作品详情
-//    public function  workDetailAction(Request $request,Works $workData){
-//
-//        return $this->render("workDetail.html.twig", array(
-//            'workData'=>$workData,
-//            'active' => 'workDetail'
-//        ));
-//    }
-//
+
+    //作品详情
+    /**
+     * @Route("/workDetail", name="workDetail")
+     */
+    public function  workDetail(Request $request,Works $workData){
+
+        return $this->render("workDetail.html.twig", array(
+            'workData'=>$workData,
+            'active' => 'workDetail'
+        ));
+    }
+
     //我的
     /**
      * @Route("/my", name="my")
@@ -202,7 +179,7 @@ class FrontEndController extends AbstractController
 //    public function  reserveAction(Post $post){
 //        $em = $this->getDoctrine()->getManager();
 //
-//        $posts = $em->getRepository('cocoseWebBundle:Post')->findAll();
+//        $posts = $em->getRepository('App:Post')->findAll();
 //        //the template path is the relative file path from `templates/`
 //        return $this->render("reserve.html.twig", array(
 //            //'post' => $post,
@@ -212,7 +189,7 @@ class FrontEndController extends AbstractController
 //    //KnpPaginatorBundle分页组件
 //    public function indexAction($page,$limit){
 //        $em = $this->getDoctrine()->getManager();
-//        $qb = $em->getRepository('cocoseWebBundle:Post')->createQueryBuilder('');
+//        $qb = $em->getRepository('App:Post')->createQueryBuilder('');
 //        //Appbundle是你的模块DemoList是你的表实体 u是别名后面可接条件
 //
 //        $paginator = $this->get('knp_paginator');

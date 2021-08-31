@@ -22,7 +22,7 @@ services:
 #            - '../src/Tests/'
 
     App\:
-        resource: '../src/Services/'
+        resource: '../src/'
         exclude:
             - '../src/DependencyInjection/'
             - '../src/Entity/'

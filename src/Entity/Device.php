@@ -1,14 +1,14 @@
 <?php
 
-namespace cocose\WebBundle\Entity;
-
+namespace App\Entity;
+use App\Repository\DeviceRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Device
  *
  * @ORM\Table(name="device")
- * @ORM\Entity(repositoryClass="cocose\WebBundle\Repository\DeviceRepository")
+ * @ORM\Entity(repositoryClass=DeviceRepository::class)
  */
 class Device
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace cocose\WebBundle\Form;
+namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -20,7 +20,7 @@ class ReserveType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'cocose\WebBundle\Entity\Reserve'
+            'data_class' => 'App\Entity\Reserve'
         ));
     }
 

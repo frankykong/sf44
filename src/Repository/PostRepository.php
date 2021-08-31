@@ -1,6 +1,6 @@
 <?php
 
-namespace cocose\WebBundle\Repository;
+namespace App\Repository;
 
 /**
  * PostRepository

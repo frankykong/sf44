@@ -1,6 +1,6 @@
 <?php
 
-namespace cocose\WebBundle\Entity;
+namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * User
  *
  * @ORM\Table(name="user")
- * @ORM\Entity(repositoryClass="cocose\WebBundle\Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="UserRepository::class")
  */
 class User
 {

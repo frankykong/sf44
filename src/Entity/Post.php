@@ -1,14 +1,14 @@
 <?php
 
-namespace src\Entity;
-
+namespace App\Entity;
+use App\Repository\PostRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Post
  *
  * @ORM\Table(name="post")
- * @ORM\Entity(repositoryClass="cocose\WebBundle\Repository\PostRepository")
+ * @ORM\Entity(repositoryClass=PostRepository::class)
  */
 class Post
 {
