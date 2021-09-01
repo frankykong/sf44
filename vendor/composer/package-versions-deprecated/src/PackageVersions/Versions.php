@@ -23,7 +23,7 @@ final class Versions
      * @deprecated please use {@see self::rootPackageName()} instead.
      *             This constant will be removed in version 2.0.0.
      */
-    const ROOT_PACKAGE_NAME = 'symfony/website-skeleton';
+    const ROOT_PACKAGE_NAME = '__root__';
 
     /**
      * Array of all available composer packages.
@@ -123,6 +123,7 @@ final class Versions
   'symfony/var-dumper' => 'v4.4.27@391d6d0e7a06ab54eb7c38fab29b8d174471b3ba',
   'symfony/var-exporter' => 'v4.4.27@447d2c9ff61d3844c231280b8575ef5456f5dbb6',
   'symfony/web-link' => 'v4.4.27@a55c3a0a5da44965f39cf5f770a2e5a4a95c2c68',
+  'symfony/webpack-encore-bundle' => 'v1.12.0@9943a59f8551b7a8181e19a2b4efa60e5907c667',
   'symfony/yaml' => 'v4.4.29@3abcc4db06d4e776825eaa3ed8ad924d5bc7432a',
   'twig/extra-bundle' => 'v3.3.1@e12a8ee63387abb83fb7e4c897663bfb94ac22b6',
   'twig/twig' => 'v3.3.2@21578f00e83d4a82ecfa3d50752b609f13de6790',
@@ -158,13 +159,13 @@ final class Versions
   'symfony/phpunit-bridge' => 'v5.3.4@bc368b765a651424b19f5759953ce2873e7d448b',
   'symfony/web-profiler-bundle' => 'v4.4.28@be142cf26bb81ff31f7a482c22b1e58b93719f00',
   'theseer/tokenizer' => '1.2.1@34a41e998c2183e22995f158c581e7b5e755ab9e',
-  'paragonie/random_compat' => '2.*@',
-  'symfony/polyfill-ctype' => '*@',
-  'symfony/polyfill-iconv' => '*@',
-  'symfony/polyfill-php71' => '*@',
-  'symfony/polyfill-php70' => '*@',
-  'symfony/polyfill-php56' => '*@',
-  'symfony/website-skeleton' => 'v4.4.99@',
+  'paragonie/random_compat' => '2.*@ddf2c6edaf2e785c2105c61ed2062bdb8d47c0c9',
+  'symfony/polyfill-ctype' => '*@ddf2c6edaf2e785c2105c61ed2062bdb8d47c0c9',
+  'symfony/polyfill-iconv' => '*@ddf2c6edaf2e785c2105c61ed2062bdb8d47c0c9',
+  'symfony/polyfill-php71' => '*@ddf2c6edaf2e785c2105c61ed2062bdb8d47c0c9',
+  'symfony/polyfill-php70' => '*@ddf2c6edaf2e785c2105c61ed2062bdb8d47c0c9',
+  'symfony/polyfill-php56' => '*@ddf2c6edaf2e785c2105c61ed2062bdb8d47c0c9',
+  '__root__' => 'dev-master@ddf2c6edaf2e785c2105c61ed2062bdb8d47c0c9',
 );
 
     private function __construct()

@@ -32,11 +32,6 @@ class Category
     /**
      * @ORM\Column(type="integer")
      */
-    private $groudId;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
     private $parentId;
 
     /**
@@ -54,18 +49,6 @@ class Category
         return $this->id;
     }
 
-    public function getCode(): ?string
-    {
-        return $this->code;
-    }
-
-    public function setCode(string $code): self
-    {
-        $this->code = $code;
-
-        return $this;
-    }
-
     public function getName(): ?string
     {
         return $this->name;
@@ -74,18 +57,6 @@ class Category
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getGroudId(): ?int
-    {
-        return $this->groudId;
-    }
-
-    public function setGroudId(int $groudId): self
-    {
-        $this->groudId = $groudId;
 
         return $this;
     }
