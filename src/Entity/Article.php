@@ -23,9 +23,9 @@ class Article
     private $title;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="article")
      */
-    private $categoryId;
+    private $category;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -80,18 +80,6 @@ class Article
     public function setTitle(string $title): self
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    public function getCategoryId(): ?int
-    {
-        return $this->categoryId;
-    }
-
-    public function setCategoryId(int $categoryId): self
-    {
-        $this->categoryId = $categoryId;
 
         return $this;
     }
@@ -188,6 +176,18 @@ class Article
     public function setUpdateTime(int $updateTime): self
     {
         $this->updateTime = $updateTime;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }
