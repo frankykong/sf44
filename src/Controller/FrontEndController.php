@@ -63,6 +63,30 @@ class FrontEndController extends AbstractController
         ));
     }
 
+    //提交表单数据
+    /**
+     * @Route("/labDetailsform", name="labDetailsform")
+     */
+    public function labDetailsform(Request $request):Response
+    {
+        $task = new Task();
+        $form = $this->createForm(TaskType::class, $task);
+
+        if ($request->isMethod('POST')) {
+            $form->submit($request->request->get($form->getName()));
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                // perform some action...
+
+                return $this->redirectToRoute('task_success');
+            }
+        }
+
+        return $this->render('labDetailsform.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
 
 //    public function labSubAction(){
 //        return $this->render("labSub.html.twig",array(

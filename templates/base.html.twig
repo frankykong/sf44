@@ -13,15 +13,16 @@
         <meta name="description" content="{% block description %}{% endblock %}" />
         <link href="{{ asset('https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css') }}" rel="stylesheet" />
         <link href="{{ asset('https://cdn.bootcdn.net/ajax/libs/Swiper/6.8.0/swiper-bundle.min.css') }}" rel="stylesheet" />
+{#        <link href="{{ asset('/Command/css/common.css') }}" rel="stylesheet" />#}
+{#        <link href="{{ asset('/Command/css/base.css') }}" rel="stylesheet" />#}
+{#        <link href="{{ asset('/Command/css/template.css') }}" rel="stylesheet" />#}
         <script src="{{ asset('https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js') }}"></script>
         <script src="{{ asset('https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('https://cdn.bootcdn.net/ajax/libs/Swiper/6.8.0/swiper-bundle.min.js') }}"></script>
-        <link href="{{ asset('/Command/css/common.css') }}" rel="stylesheet" />
-        <link href="{{ asset('/Command/css/base.css') }}" rel="stylesheet" />
-        <link href="{{ asset('/Command/css/template.css') }}" rel="stylesheet" />
-        <script src="{{ asset('/Command/jQuery/base.js') }}"></script>
+        <script src="{{ asset('https://cdn.jsdelivr.net/npm/wangeditor@latest/dist/wangEditor.min.js') }}"></script>
+{#        <script src="{{ asset('/Command/jQuery/base.js') }}"></script>#}
         {% block header %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+{#        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />#}
     </head>
     <body>
 
