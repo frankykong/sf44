@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 
-use http\Client\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,7 +11,6 @@ use App\Entity\Post;
 use App\Entity\Device;
 use App\Entity\Project;
 use App\Entity\Works;
-use App\Entity\Reserve;
 
 class FrontEndController extends AbstractController
 {
@@ -136,8 +134,6 @@ class FrontEndController extends AbstractController
     {
     }
 
-
-
     //作品列表
     /**
      * @Route("/worksList", name="worksList")
@@ -145,7 +141,6 @@ class FrontEndController extends AbstractController
     public function  worksList(){
         $em = $this->getDoctrine()->getManager();
         $worksData = $em->getRepository('App:Works')->findAll();
-        dump($worksData);
         return $this->render("worksList.html.twig", array(
             'worksData'=>$worksData,
             'active' => 'worksList'
@@ -174,38 +169,5 @@ class FrontEndController extends AbstractController
             'active' => 'my'
         ));
     }
-
-//
-//    public function  reserveAction(Post $post){
-//        $em = $this->getDoctrine()->getManager();
-//
-//        $posts = $em->getRepository('App:Post')->findAll();
-//        //the template path is the relative file path from `templates/`
-//        return $this->render("reserve.html.twig", array(
-//            //'post' => $post,
-//        ));
-//
-//    }
-//    //KnpPaginatorBundle分页组件
-//    public function indexAction($page,$limit){
-//        $em = $this->getDoctrine()->getManager();
-//        $qb = $em->getRepository('App:Post')->createQueryBuilder('');
-//        //Appbundle是你的模块DemoList是你的表实体 u是别名后面可接条件
-//
-//        $paginator = $this->get('knp_paginator');
-//        $pagination = $paginator->paginate($qb, $page,$limit);
-//
-//        return $this->render('news/list.html.twig',['pagination' => $pagination]);
-//    }
-//
-
-
-
-
-
-
-
-
-
 
 }

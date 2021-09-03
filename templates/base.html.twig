@@ -21,6 +21,7 @@
         <link href="{{ asset('/Command/css/template.css') }}" rel="stylesheet" />
         <script src="{{ asset('/Command/jQuery/base.js') }}"></script>
         {% block header %}{% endblock %}
+        {{ encore_entry_link_tags('app') }}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
@@ -46,7 +47,7 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="{{ asset('build/app.js') }}"></script>
+    {{ encore_entry_script_tags('app') }}
 
     </body>
 </html>
