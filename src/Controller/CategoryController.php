@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,6 +18,9 @@ class CategoryController extends AbstractController
 {
     /**
      * @Route("/", name="category_index", methods={"GET"})
+     * @param CategoryRepository $categoryRepository
+     * @param Category $category
+     * @return Response
      */
     public function index(CategoryRepository $categoryRepository): Response
     {
@@ -26,8 +30,27 @@ class CategoryController extends AbstractController
         ]);
     }
 
+//    /**
+//     * @Route("/test", name="test", methods={"GET"})
+//     * @param EntityManagerInterface $entityManager
+//     * @return Response
+//     */
+//    public function test(EntityManagerInterface $entityManager)
+//    {
+//        $parent = new Category('父级别');
+//        $entityManager->persist($parent);
+//        $child = new Category('子级别A');
+//        $child->setParent($parent);
+//        $entityManager->persist($child);
+//        $entityManager->flush();
+//        return new Response(sprintf('Parent category record created with id %d an child Category record create with id %d', $parent->getId(), $child->getId() ));
+//
+//    }
+
     /**
      * @Route("/new", name="category_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {

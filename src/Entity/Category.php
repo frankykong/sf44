@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
+ * @ORM\Table(name="category")
  */
 class Category
 {
@@ -25,24 +26,79 @@ class Category
     private $name;
 
     /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $description;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="category")
      */
     private $article;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\OneToMany(targetEntity="App\Entity\Category", mappedBy="parent", cascade={"persist"})
      */
-    private $parentId;
+    private $children;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="children")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      */
-    private $description;
+    private $parent;
 
     public function __construct()
     {
-        $this->article = new ArrayCollection();
+        //$this->article = new ArrayCollection();
+        $this->children = new ArrayCollection();
     }
+
+
+//    public function __construct($name)
+//    {
+//        $this->children = new ArrayCollection();
+//        $this->name = $name;
+//    }
+
+    /**
+     * @return mixed
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * @param mixed $children
+     */
+    public function setChildren($children): void
+    {
+        $this->children = $children;
+    }
+
+    public function addChild(Category $child)
+    {
+        if (!$this->children->contains($child)){
+            $this->children[] =$child;
+        }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * @param mixed $parent
+     */
+    public function setParent(Category $parent): void
+    {
+        $parent->addChild($this);
+        $this->parent = $parent;
+    }
+
 
     public function getId(): ?int
     {
@@ -57,18 +113,6 @@ class Category
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getParentId(): ?int
-    {
-        return $this->parentId;
-    }
-
-    public function setParentId(int $parentId): self
-    {
-        $this->parentId = $parentId;
 
         return $this;
     }
@@ -115,8 +159,19 @@ class Category
         return $this;
     }
 
+    public function removeChild(Category $child): self
+    {
+        if ($this->children->removeElement($child)) {
+            // set the owning side to null (unless already changed)
+            if ($child->getParent() === $this) {
+                $child->setParent(null);
+            }
+        }
+
+        return $this;
+    }
+
     public function __toString(){
         return $this->name;
     }
-
 }
