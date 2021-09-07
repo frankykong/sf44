@@ -3,13 +3,18 @@
 namespace App\Entity;
 
 use App\Repository\CategoryRepository;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+use Gedmo\Mapping\Annotation as Gedmo;
+
+
 /**
- * @ORM\Entity(repositoryClass=CategoryRepository::class)
+ * @Gedmo\Tree(type="nested")
  * @ORM\Table(name="category")
+ * @ORM\Entity(repositoryClass="Gedmo\Tree\Entity\Repository\NestedTreeRepository")
  */
 class Category
 {
@@ -21,84 +26,83 @@ class Category
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=64)
      */
     private $name;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $description;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="App\Entity\Category", mappedBy="Category")
      */
     private $article;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Category", mappedBy="parent", cascade={"persist"})
+     * @Gedmo\TreeLeft
+     * @ORM\Column(name="lft", type="integer")
      */
-    private $children;
+    private $lft;
 
     /**
+     * @Gedmo\TreeLevel
+     * @ORM\Column(name="lvl", type="integer")
+     */
+    private $lvl;
+
+    /**
+     * @Gedmo\TreeRight
+     * @ORM\Column(name="rgt", type="integer")
+     */
+    private $rgt;
+
+    /**
+     * @Gedmo\TreeRoot
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category")
+     * @ORM\JoinColumn(name="tree_root", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $root;
+
+    /**
+     * @Gedmo\TreeParent
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="children")
-     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $parent;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Category", mappedBy="parent")
+     * @ORM\OrderBy({"lft" = "ASC"})
+     */
+    private $children;
 
     public function __construct()
     {
         //$this->article = new ArrayCollection();
-        $this->children = new ArrayCollection();
+        //$this->children = new ArrayCollection();
     }
 
-
-//    public function __construct($name)
-//    {
-//        $this->children = new ArrayCollection();
-//        $this->name = $name;
-//    }
-
-    /**
-     * @return mixed
-     */
-    public function getChildren()
+    public function getChildren(): ArrayCollection
     {
         return $this->children;
     }
 
-    /**
-     * @param mixed $children
-     */
     public function setChildren($children): void
     {
         $this->children = $children;
     }
 
-    public function addChild(Category $child)
-    {
-        if (!$this->children->contains($child)){
-            $this->children[] =$child;
-        }
-    }
-
-    /**
-     * @return mixed
-     */
     public function getParent()
     {
         return $this->parent;
     }
 
-    /**
-     * @param mixed $parent
-     */
-    public function setParent(Category $parent): void
+    public function setParent(Category $parent = null): void
     {
-        $parent->addChild($this);
         $this->parent = $parent;
     }
 
+    public function getRoot()
+    {
+        return $this->root;
+    }
 
     public function getId(): ?int
     {
@@ -117,11 +121,6 @@ class Category
         return $this;
     }
 
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
     public function setDescription(string $description): self
     {
         $this->description = $description;
@@ -129,9 +128,6 @@ class Category
         return $this;
     }
 
-    /**
-     * @return Collection|Article[]
-     */
     public function getArticle(): Collection
     {
         return $this->article;
@@ -143,8 +139,46 @@ class Category
             $this->article[] = $article;
             $article->setCategory($this);
         }
-
         return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getLeft(): ?int
+    {
+        return $this->lft;
+    }
+
+    public function setLeft($lft): void
+    {
+        $this->lft = $lft;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getRight(): ?int
+    {
+        return $this->rgt;
+    }
+
+    public function setRight($rgt): void
+    {
+        $this->rgt = $rgt;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getLevel(): ?int
+    {
+        return $this->lvl;
+    }
+
+    public function setLevel($level): void
+    {
+        $this->lvl = $level;
     }
 
     public function removeArticle(Article $article): self

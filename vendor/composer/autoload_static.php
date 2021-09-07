@@ -128,6 +128,10 @@ class ComposerStaticInit2481a3b0345dcf095f486a113226e0eb
             'Laminas\\EventManager\\' => 21,
             'Laminas\\Code\\' => 13,
         ),
+        'G' => 
+        array (
+            'Gedmo\\' => 6,
+        ),
         'E' => 
         array (
             'Egulias\\EmailValidator\\' => 23,
@@ -150,6 +154,10 @@ class ComposerStaticInit2481a3b0345dcf095f486a113226e0eb
             'Doctrine\\Bundle\\MigrationsBundle\\' => 33,
             'Doctrine\\Bundle\\DoctrineBundle\\' => 31,
             'DeepCopy\\' => 9,
+        ),
+        'B' => 
+        array (
+            'Behat\\Transliterator\\' => 21,
         ),
         'A' => 
         array (
@@ -497,6 +505,10 @@ class ComposerStaticInit2481a3b0345dcf095f486a113226e0eb
         array (
             0 => __DIR__ . '/..' . '/laminas/laminas-code/src',
         ),
+        'Gedmo\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/gedmo/doctrine-extensions/src',
+        ),
         'Egulias\\EmailValidator\\' => 
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/src',
@@ -566,6 +578,10 @@ class ComposerStaticInit2481a3b0345dcf095f486a113226e0eb
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
+        ),
+        'Behat\\Transliterator\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/behat/transliterator/src/Behat/Transliterator',
         ),
         'App\\Tests\\' => 
         array (

@@ -11,6 +11,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
+use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
+
 /**
  * @Route("/category")
  */
@@ -46,6 +49,60 @@ class CategoryController extends AbstractController
 //        return new Response(sprintf('Parent category record created with id %d an child Category record create with id %d', $parent->getId(), $child->getId() ));
 //
 //    }
+
+    /**
+     * @Route("/test", name="test", methods={"GET"})
+     * @param EntityManagerInterface $em
+     * @return Response
+     */
+    public function test(EntityManagerInterface $em, CategoryRepository $categoryRepository)
+    {
+        $food = new Category();
+        $food->setName('Food');
+
+        $fruits = new Category();
+        $fruits->setName('Fruits');
+        $fruits->setParent($food);
+
+        $vegetables = new Category();
+        $vegetables->setName('Vegetables');
+        $vegetables->setParent($food);
+
+        $carrots = new Category();
+        $carrots->setName('Carrots');
+        $carrots->setParent($vegetables);
+
+        $em->persist($food);
+        $em->persist($fruits);
+        $em->persist($vegetables);
+        $em->persist($carrots);
+        $em->flush();
+
+//        $food = new Category();
+//        $food->setName('Food');
+//
+//        $fruits = new Category();
+//        $fruits->setName('Fruits');
+//
+//        $vegetables = new Category();
+//        $vegetables->setName('Vegetables');
+//
+//        $carrots = new Category();
+//        $carrots->setName('Carrots');
+//
+//        $treeRepository = new NestedTreeRepository($em, $categoryRepository);
+//
+//        $treeRepository
+//            ->persistAsFirstChild($food)
+//            ->persistAsFirstChildOf($fruits, $food)
+//            ->persistAsLastChildOf($vegetables, $food)
+//            ->persistAsNextSiblingOf($carrots, $fruits);
+//
+//        $em->flush();
+//
+//        return new Response(sprintf('Parent category record created with id %d an child Category record create with id %d', $food->getId(), $fruits->getId() ));
+
+    }
 
     /**
      * @Route("/new", name="category_new", methods={"GET","POST"})
