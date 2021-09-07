@@ -51,12 +51,7 @@ class ArticleType extends AbstractType
                     'placeholder' => '输入内容'
                 ]
             ])
-            ->add('thumbnailSmall')
-            ->add('thumbnailBig')
             ->add('status')
-            ->add('hits')
-            ->add('createdTime')
-            ->add('updateTime')
         ;
     }
 

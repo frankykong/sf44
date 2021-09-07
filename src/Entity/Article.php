@@ -3,10 +3,13 @@
 namespace App\Entity;
 
 use App\Repository\ArticleRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ * @ORM\EntityListeners({"App\Listeners\ArticleListener"})
  */
 class Article
 {
@@ -26,6 +29,11 @@ class Article
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="article")
      */
     private $category;
+
+    /**
+     * @ORM\OneToMany (targetEntity="App\Entity\Attachment", mappedBy="article")
+     */
+    private $attachments;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -66,6 +74,11 @@ class Article
      * @ORM\Column(type="integer")
      */
     private $updateTime;
+
+    public function __construct()
+    {
+        $this->attachments = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -188,6 +201,36 @@ class Article
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Attachment[]
+     */
+    public function getAttachments(): Collection
+    {
+        return $this->attachments;
+    }
+
+    public function addAttachment(Attachment $attachment): self
+    {
+        if (!$this->attachments->contains($attachment)) {
+            $this->attachments[] = $attachment;
+            $attachment->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAttachment(Attachment $attachment): self
+    {
+        if ($this->attachments->removeElement($attachment)) {
+            // set the owning side to null (unless already changed)
+            if ($attachment->getArticle() === $this) {
+                $attachment->setArticle(null);
+            }
+        }
 
         return $this;
     }

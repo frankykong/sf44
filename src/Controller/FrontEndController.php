@@ -3,16 +3,15 @@
 namespace App\Controller;
 
 
-use http\Client\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 use App\Entity\Post;
 use App\Entity\Device;
 use App\Entity\Project;
 use App\Entity\Works;
-use App\Entity\Reserve;
 
 class FrontEndController extends AbstractController
 {
@@ -53,13 +52,28 @@ class FrontEndController extends AbstractController
 //    }
 
     /**
-     * @Route("/labDetail", name="labDetail")
+     * @Route("/labdetail/{id}", name="labDetail")
      */
-    public function  labDetail(Request $request,Post $labData){
-
+    public function  labDetail(Request $request,Post $labData)
+    {
+//        $em = $this->getDoctrine()->getManager();
+//        $labData = $em->getRepository('App:Post')->findOneBy('id');
+        //dump($labData);
         return $this->render("labDetail.html.twig", array(
             'labData' => $labData,
             'active' => 'labDetail'
+        ));
+
+//        return $this->json([
+//            'location' => 'dddd'
+//        ]);
+    }
+    /**
+     * @Route("/labNotice", name="labNotice")
+     */
+    public function labNotice(){
+        return $this->render("labNotice.html.twig", array(
+            'active' => 'labNotice'
         ));
     }
 
@@ -69,36 +83,30 @@ class FrontEndController extends AbstractController
      */
     public function labDetailsform(Request $request):Response
     {
-        $task = new Task();
-        $form = $this->createForm(TaskType::class, $task);
+        return $this->render("labDetailsform.html.twig", array(
+            'active' => 'labDetailsform'
+        ));
 
-        if ($request->isMethod('POST')) {
-            $form->submit($request->request->get($form->getName()));
-
-            if ($form->isSubmitted() && $form->isValid()) {
-                // perform some action...
-
-                return $this->redirectToRoute('task_success');
-            }
-        }
-
-        return $this->render('labDetailsform.html.twig', [
-            'form' => $form->createView(),
-        ]);
     }
 
+    /**
+     * @Route("/labSub", name="labSub")
+     */
+    public function labSubAction(){
+        return $this->render("labSub.html.twig",array(
+            'active' => 'labSub'
+        ));
+    }
 
-//    public function labSubAction(){
-//        return $this->render("labSub.html.twig",array(
-//            'active' => 'labSub'
-//        ));
-//    }
-//    public function labConfirmAction(){
-//        return $this->render("labConfirm.html.twig",array(
-//            'active' => 'labConfirm'
-//        ));
-//    }
-//
+    /**
+     * @Route("/labConfirm", name="labConfirm")
+     */
+    public function labConfirmAction(){
+        return $this->render("labConfirm.html.twig",array(
+            'active' => 'labConfirm'
+        ));
+    }
+
     //项目列表
     /**
      * @Route("/equipmentList", name="equipmentList")
@@ -115,7 +123,7 @@ class FrontEndController extends AbstractController
 
     //项目列表
     /**
-     * @Route("/equipmentDetail", name="equipmentDetail")
+     * @Route("/equipmentDetail/{id}", name="equipmentDetail")
      */
     public function equipmentDetail(Request $request,Device $equipmentData)
     {
@@ -126,6 +134,9 @@ class FrontEndController extends AbstractController
         ));
     }
 
+    /**
+     * @Route("/equipmentNotice", name="equipmentNotice")
+     */
     public function equipmentNoticeAction(){
         return $this->render("equipmentNotice.html.twig",array(
             'active' => 'equipmentNotice'
@@ -133,7 +144,10 @@ class FrontEndController extends AbstractController
         ));
     }
 
-    public function equipmentDetailsAction(Request $request)
+    /**
+     * @Route("/equipmentDetailsform", name="equipmentDetailsform")
+     */
+    public function equipmentDetailsformAction(Request $request)
     {
         return $this->render("equipmentDetailsform.html.twig", array(
             'active' => 'equipmentDetails'
@@ -154,13 +168,15 @@ class FrontEndController extends AbstractController
     }
 
     /**
-     * @Route("/projectDetails", name="projectDetails")
+     * @Route("/projectDetails/{id}", name="projectDetails")
      */
-    public function projectDetails(Request $request)
+    public function projectDetails(Request $request,Project $projectData)
     {
+        return $this->render('projectDetails.html.twig',array(
+            'projectData'=>$projectData,
+            'active' => 'projectDetails'
+        ));
     }
-
-
 
     //作品列表
     /**
@@ -178,7 +194,7 @@ class FrontEndController extends AbstractController
 
     //作品详情
     /**
-     * @Route("/workDetail", name="workDetail")
+     * @Route("/workDetail/{id}", name="workDetail")
      */
     public function  workDetail(Request $request,Works $workData){
 
@@ -198,38 +214,5 @@ class FrontEndController extends AbstractController
             'active' => 'my'
         ));
     }
-
-//
-//    public function  reserveAction(Post $post){
-//        $em = $this->getDoctrine()->getManager();
-//
-//        $posts = $em->getRepository('App:Post')->findAll();
-//        //the template path is the relative file path from `templates/`
-//        return $this->render("reserve.html.twig", array(
-//            //'post' => $post,
-//        ));
-//
-//    }
-//    //KnpPaginatorBundle分页组件
-//    public function indexAction($page,$limit){
-//        $em = $this->getDoctrine()->getManager();
-//        $qb = $em->getRepository('App:Post')->createQueryBuilder('');
-//        //Appbundle是你的模块DemoList是你的表实体 u是别名后面可接条件
-//
-//        $paginator = $this->get('knp_paginator');
-//        $pagination = $paginator->paginate($qb, $page,$limit);
-//
-//        return $this->render('news/list.html.twig',['pagination' => $pagination]);
-//    }
-//
-
-
-
-
-
-
-
-
-
 
 }

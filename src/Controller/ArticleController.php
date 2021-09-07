@@ -93,7 +93,7 @@ class ArticleController extends AbstractController
 
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('article_index', [], Response::HTTP_SEE_OTHER);
+           // return $this->redirectToRoute('article_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('article/edit.html.twig', [
