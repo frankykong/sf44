@@ -6,6 +6,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 use App\Entity\Post;
 use App\Entity\Device;
@@ -51,28 +52,61 @@ class FrontEndController extends AbstractController
 //    }
 
     /**
-     * @Route("/labDetail", name="labDetail")
+     * @Route("/labdetail/{id}", name="labDetail")
      */
-    public function  labDetail(Request $request,Post $labData){
-
+    public function  labDetail(Request $request,Post $labData)
+    {
+//        $em = $this->getDoctrine()->getManager();
+//        $labData = $em->getRepository('App:Post')->findOneBy('id');
+        //dump($labData);
         return $this->render("labDetail.html.twig", array(
             'labData' => $labData,
             'active' => 'labDetail'
         ));
+
+//        return $this->json([
+//            'location' => 'dddd'
+//        ]);
+    }
+    /**
+     * @Route("/labNotice", name="labNotice")
+     */
+    public function labNotice(){
+        return $this->render("labNotice.html.twig", array(
+            'active' => 'labNotice'
+        ));
     }
 
+    //提交表单数据
+    /**
+     * @Route("/labDetailsform", name="labDetailsform")
+     */
+    public function labDetailsform(Request $request):Response
+    {
+        return $this->render("labDetailsform.html.twig", array(
+            'active' => 'labDetailsform'
+        ));
 
-//    public function labSubAction(){
-//        return $this->render("labSub.html.twig",array(
-//            'active' => 'labSub'
-//        ));
-//    }
-//    public function labConfirmAction(){
-//        return $this->render("labConfirm.html.twig",array(
-//            'active' => 'labConfirm'
-//        ));
-//    }
-//
+    }
+
+    /**
+     * @Route("/labSub", name="labSub")
+     */
+    public function labSubAction(){
+        return $this->render("labSub.html.twig",array(
+            'active' => 'labSub'
+        ));
+    }
+
+    /**
+     * @Route("/labConfirm", name="labConfirm")
+     */
+    public function labConfirmAction(){
+        return $this->render("labConfirm.html.twig",array(
+            'active' => 'labConfirm'
+        ));
+    }
+
     //项目列表
     /**
      * @Route("/equipmentList", name="equipmentList")
@@ -89,7 +123,7 @@ class FrontEndController extends AbstractController
 
     //项目列表
     /**
-     * @Route("/equipmentDetail", name="equipmentDetail")
+     * @Route("/equipmentDetail/{id}", name="equipmentDetail")
      */
     public function equipmentDetail(Request $request,Device $equipmentData)
     {
@@ -100,6 +134,9 @@ class FrontEndController extends AbstractController
         ));
     }
 
+    /**
+     * @Route("/equipmentNotice", name="equipmentNotice")
+     */
     public function equipmentNoticeAction(){
         return $this->render("equipmentNotice.html.twig",array(
             'active' => 'equipmentNotice'
@@ -107,7 +144,10 @@ class FrontEndController extends AbstractController
         ));
     }
 
-    public function equipmentDetailsAction(Request $request)
+    /**
+     * @Route("/equipmentDetailsform", name="equipmentDetailsform")
+     */
+    public function equipmentDetailsformAction(Request $request)
     {
         return $this->render("equipmentDetailsform.html.twig", array(
             'active' => 'equipmentDetails'
@@ -128,10 +168,14 @@ class FrontEndController extends AbstractController
     }
 
     /**
-     * @Route("/projectDetails", name="projectDetails")
+     * @Route("/projectDetails/{id}", name="projectDetails")
      */
-    public function projectDetails(Request $request)
+    public function projectDetails(Request $request,Project $projectData)
     {
+        return $this->render('projectDetails.html.twig',array(
+            'projectData'=>$projectData,
+            'active' => 'projectDetails'
+        ));
     }
 
     //作品列表
@@ -141,6 +185,7 @@ class FrontEndController extends AbstractController
     public function  worksList(){
         $em = $this->getDoctrine()->getManager();
         $worksData = $em->getRepository('App:Works')->findAll();
+        dump($worksData);
         return $this->render("worksList.html.twig", array(
             'worksData'=>$worksData,
             'active' => 'worksList'
@@ -149,7 +194,7 @@ class FrontEndController extends AbstractController
 
     //作品详情
     /**
-     * @Route("/workDetail", name="workDetail")
+     * @Route("/workDetail/{id}", name="workDetail")
      */
     public function  workDetail(Request $request,Works $workData){
 
