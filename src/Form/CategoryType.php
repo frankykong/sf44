@@ -19,10 +19,12 @@ class CategoryType extends AbstractType
                     'placeholder' => '目录名'
                 ]
             ])
-            ->add('parent', EntityType::class, [
-                'class' => 'App\Entity\Category'
+//            ->add('parent', EntityType::class, [
+//                'class' => 'App\Entity\Category'
+//            ])
+            ->add('parent', EntityTreeType::class, [
+                'class' => Category::class
             ])
-            ->add('description')
         ;
     }
 

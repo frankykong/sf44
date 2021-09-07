@@ -31,60 +31,67 @@ class Category
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Category", mappedBy="Category")
-     */
-    private $article;
-
-    /**
-     * @Gedmo\TreeLeft
-     * @ORM\Column(name="lft", type="integer")
-     */
-    private $lft;
-
-    /**
-     * @Gedmo\TreeLevel
-     * @ORM\Column(name="lvl", type="integer")
-     */
-    private $lvl;
-
-    /**
-     * @Gedmo\TreeRight
-     * @ORM\Column(name="rgt", type="integer")
-     */
-    private $rgt;
-
-    /**
+     * @var Category|null
      * @Gedmo\TreeRoot
      * @ORM\ManyToOne(targetEntity="App\Entity\Category")
-     * @ORM\JoinColumn(name="tree_root", referencedColumnName="id", onDelete="CASCADE")
      */
     private $root;
 
     /**
+     * @var Category|null
      * @Gedmo\TreeParent
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="children")
-     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $parent;
 
     /**
+     * @var Category
      * @ORM\OneToMany(targetEntity="App\Entity\Category", mappedBy="parent")
-     * @ORM\OrderBy({"lft" = "ASC"})
+     * @ORM\JoinColumn(nullable=false)
      */
     private $children;
 
+    /**
+     * @var int|null
+     *
+     * @Gedmo\TreeLeft
+     * @ORM\Column(type="integer")
+     */
+    private $lft;
+
+    /**
+     * @var int|null
+     *
+     * @Gedmo\TreeLevel
+     * @ORM\Column(type="integer")
+     */
+    private $lvl;
+
+    /**
+     * @var int|null
+     *
+     * @Gedmo\TreeRight
+     * @ORM\Column(type="integer")
+     */
+    private $rgt;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Category", mappedBy="Category")
+     */
+    private $article;
+
     public function __construct()
     {
-        //$this->article = new ArrayCollection();
-        //$this->children = new ArrayCollection();
+        $this->article = new ArrayCollection();
+        //$this->childrens = new ArrayCollection();
     }
 
-    public function getChildren(): ArrayCollection
+    public function getChildren()
     {
         return $this->children;
     }
 
-    public function setChildren($children): void
+    public function setChildren(Category $children): void
     {
         $this->children = $children;
     }
@@ -121,13 +128,9 @@ class Category
         return $this;
     }
 
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
+    /**
+     * @return Collection|article[]
+     */
     public function getArticle(): Collection
     {
         return $this->article;
@@ -142,44 +145,6 @@ class Category
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getLeft(): ?int
-    {
-        return $this->lft;
-    }
-
-    public function setLeft($lft): void
-    {
-        $this->lft = $lft;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getRight(): ?int
-    {
-        return $this->rgt;
-    }
-
-    public function setRight($rgt): void
-    {
-        $this->rgt = $rgt;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getLevel(): ?int
-    {
-        return $this->lvl;
-    }
-
-    public function setLevel($level): void
-    {
-        $this->lvl = $level;
-    }
 
     public function removeArticle(Article $article): self
     {
@@ -187,18 +152,6 @@ class Category
             // set the owning side to null (unless already changed)
             if ($article->getCategory() === $this) {
                 $article->setCategory(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function removeChild(Category $child): self
-    {
-        if ($this->children->removeElement($child)) {
-            // set the owning side to null (unless already changed)
-            if ($child->getParent() === $this) {
-                $child->setParent(null);
             }
         }
 

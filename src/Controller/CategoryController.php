@@ -11,8 +11,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+use App\Repository\CategoryTree;
 
-use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 
 /**
  * @Route("/category")
@@ -25,8 +25,12 @@ class CategoryController extends AbstractController
      * @param Category $category
      * @return Response
      */
-    public function index(CategoryRepository $categoryRepository): Response
+    public function index(CategoryRepository $categoryRepository, CategoryTree $categoryTree): Response
     {
+        //$tree = new CategoryTree($entityManager);
+
+        dump($categoryTree());
+
         return $this->render('category/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
             'active' => 'category'
@@ -107,17 +111,25 @@ class CategoryController extends AbstractController
     /**
      * @Route("/new", name="category_new", methods={"GET","POST"})
      * @param Request $request
+     * @param CategoryTree $categories
      * @return Response
      */
-    public function new(Request $request): Response
+    public function new(Request $request, CategoryTree $tree): Response
     {
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($category);
+
+//            $repo = $entityManager->getRepository($category);
+//            $entityManager->clear();
+//            $repo->verify();
+//            $repo->recover();
+
             $entityManager->flush();
 
             $this->addFlash('info','添加成功！');
