@@ -7,6 +7,9 @@
 #/public/bundles/
 /var/
 #/vendor/
+/vendor/composer/installed.php
+/vendor/composer/package-versions-deprecated/src/PackageVersions/Versions.php
+
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
