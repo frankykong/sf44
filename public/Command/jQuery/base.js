@@ -1,10 +1,14 @@
 window.onload = function (){
     $('.collapse .navbar-nav li').click(function(){
         var index = $(this).index();
-        console.log(index);
         $('collapse .navbar-nav li').removeClass('active');
         $(this).addClass('active');
     });
+    // $('.top-index .collapse .navbar-nav li').click(function(){
+    //     var index = $(this).index();
+    //     $('.top-index .collapse .navbar-nav li a').removeClass('activeSize');
+    //     $(this).addClass('activeSize');
+    // });
 }
 window.onresize = function(){
     $('.carousel-top').each(function(){

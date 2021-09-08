@@ -1,122 +1,163 @@
 {% extends 'browser.html.twig' %}
 {% block body %}
 
-{% block header %}
-{#    <link rel="stylesheet" href="./css/workshow.css">#}
-{#    <link rel="stylesheet" href="/Command/css/workshow.css">#}
-{% endblock %}
-<div class="back-bg">
-    <div class="round-bg big-bg"></div>
-    <div class="round-min"></div>
-    <div class="round-sm"></div>
-</div>
-<div class="top-box">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="top-left">
-            <a href="{{ path('homepage') }}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#FFFFFF" class="bi bi-chevron-left" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-                </svg>
-            </a>
-            <div class="menu-name">作品展示</div>
-        </div>
-        <!-- a标签影响汉堡包按钮位置 -->
-        <a class="navbar-brand" href="#"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <!-- 下拉菜单内容 -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item nav-item-show">
-                    <a class="nav-link active" href="{{ path('homepage') }}">首页</a>
-                </li>
-                <!-- <li class="nav-item nav-item-show">
-                    <a class="nav-link active" href="./workshow.html">作品</a>
-                </li> -->
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ path('equipmentList') }}">设备浏览</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ path('labLists') }}">场地浏览</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ path('projectLists') }}">项目浏览</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link active" href="{{ path('worksList') }}">作品展示</a>
-                </li>
-                <li class="nav-item nav-item-show">
-                    <a class="nav-link active" href="{{ path('my') }}">我的</a>
-                </li>
+    {% block header %}
+        {# <link rel="stylesheet" href="./css/workshow.css"> #}
+        {# <link rel="stylesheet" href="/Command/css/workshow.css"> #}
+    {% endblock %}
+    <div class="back-bg-top">
+        <img class="auto-img" src="/Command/images/19.jpg">
+    </div>
+    <div class="back-bg">
+        <div class="round-bg big-bg"></div>
+        <div class="round-min"></div>
+        <div class="round-sm"></div>
+    </div>
+    <div class="top-box">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="top-left">
+                <a href="{{ path('homepage') }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#FFFFFF"
+                         class="bi bi-chevron-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                              d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                    </svg>
+                </a>
+                <div class="menu-name">作品展示</div>
+            </div>
+            <!-- a标签影响汉堡包按钮位置 -->
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- 下拉菜单内容 -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item nav-item-show">
+                        <a class="nav-link active" href="{{ path('homepage') }}">首页</a>
+                    </li>
+                    <!-- <li class="nav-item nav-item-show">
+                        <a class="nav-link active" href="./workshow.html">作品</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ path('equipmentList') }}">设备浏览</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ path('labLists') }}">场地浏览</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ path('projectLists') }}">项目浏览</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link active" href="{{ path('worksList') }}">作品展示</a>
+                    </li>
+                    <li class="nav-item nav-item-show">
+                        <a class="nav-link active" href="{{ path('my') }}">我的</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="search">
+        <input type="text">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="#999999" class="bi bi-search"
+             viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+        </svg>
+    </div>
+    <div class="class-ls">
+        <div class="class-box">
+            <ul class="class-list">
+                <li>Books</li>
+                <li>Game</li>
+                <li>Music</li>
+                <li>Camrea</li>
+                <li>Campin</li>
             </ul>
         </div>
-    </nav>
-</div>
-<div class="search">
-    <input type="text">
-    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="#999999" class="bi bi-search" viewBox="0 0 16 16">
-        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-    </svg>
-</div>
-<div class="class-ls">
-    <div class="class-box">
-        <ul class="class-list">
-            <li>Books</li>
-            <li>Game</li>
-            <li>Music</li>
-            <li>Camrea</li>
-            <li>Campin</li>
-        </ul>
     </div>
-</div>
-<div class="work-list">
-    <ul class="work-ls">
-        {% for worksData in worksData %}
-            <a href="{{ path('workDetail',{ 'id': worksData.id })}}">
-                <li>
-                    <div class="work-box">
-                        <div class="box-top">
-                            <div class="box-top-left">
-                                <div class="avatar">
-                                    <img src="Command/image/03.webp" alt="">
+    <div class="work-list">
+        <ul class="work-ls">
+            {% for worksData in worksData %}
+                <a href="{{ path('workDetail',{ 'id': worksData.id }) }}">
+                    <li>
+                        <div class="work-box">
+                            <div class="box-top">
+                                <div class="box-top-left">
+                                    <div class="avatar">
+                                        <img src="Command/image/03.webp" alt="">
+                                        <img src="{{ asset(worksData.userImg) }}" alt="">
+                                    </div>
+                                    <div class="box-top-det">
+                                        <div class="top-det-name">{{ worksData.userName }}</div>
+                                        <div class="top-det-info">{{ worksData.userSketch }}</div>
+                                    </div>
+                                </div>
+                                <div class="box-top-right">
+                                    <div class="other-logo">
+                                        <!-- 指示点 -->
+                                        <ol>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-middle">
+                                <div class="middle-img">
                                     <img src="{{ asset(worksData.userImg) }}" alt="">
                                 </div>
-                                <div class="box-top-det">
-                                    <div class="top-det-name">{{ worksData.userName }}</div>
-                                    <div class="top-det-info">{{ worksData.userSketch }}</div>
-                                </div>
                             </div>
-                            <div class="box-top-right">
-                                <div class="other-logo">
-                                    <!-- 指示点 -->
-                                    <ol>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                    </ol>
+                            <div class="box-bottom">
+                                <div class="box-bottom-box">
+                                    <div class="box-bottom-name">{{ worksData.userTitle }}</div>
+                                    <div class="box-bottom-info">
+                                        <div class="info-name">发表日期:</div>
+                                        <div>{% if worksData.userTime %}{{ worksData.userTime|date('Y-m-d') }}{% endif %}</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="box-middle">
-                            <div class="middle-img">
-                                <img src="{{ asset(worksData.userImg) }}" alt="">
+                    </li>
+                </a>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="work-list-2">
+        <ul class="work-ls">
+            {% for worksData in worksData %}
+                <a href="{{ path('workDetail',{ 'id': worksData.id }) }}">
+                    <li>
+                        <div class="work-box">
+                            <div class="box-top">
+                                <div class="box-top-left">
+                                    <div class="avatar">
+                                        <img src="{{ asset(worksData.userImg) }}" alt="">
+                                    </div>
+                                    <div class="box-top-box">
+                                        <div class="box-top-name">{{ worksData.userTitle }}</div>
+                                        <div class="box-top-info">
+                                            <div class="info-name">发表日期:</div>
+                                            <div>{% if worksData.userTime %}{{ worksData.userTime|date('Y-m-d') }}{% endif %}</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="box-bottom">
-                            <div class="box-bottom-box">
-                                <div class="box-bottom-name">{{ worksData.userTitle }}</div>
-                                <div class="box-bottom-info">
-                                    <div class="info-name">发表日期:</div>
-                                    <div>{% if worksData.userTime %}{{ worksData.userTime|date('Y-m-d') }}{% endif %}</div>
+                            <div class="box-bottom">
+                                <div class="box-bottom-img">
+                                    <img src="/Command/images/3.jpg">
+                                </div>
+                                <div class="box-bottom-det">
+                                    <div class="bottom-det-name">{{ worksData.userName }}</div>
+                                    <div class="bottom-det-info">{{ worksData.userSketch }}</div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </li>
-            </a>
-        {% endfor %}
-    </ul>
-</div>
-
+                    </li>
+                </a>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

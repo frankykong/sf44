@@ -32,6 +32,24 @@ class FrontEndController extends AbstractController
         ));
     }
 
+
+    //软件首页展示
+    /**
+     * @Route("/web/", name="homepageweb")
+     */
+    public function homepageweb()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $posts = $em->getRepository('App:Post')->findAll();
+        $devices = $em->getRepository('App:Device')->findAll();
+        //the template path is the relative file path from `templates/`
+        return $this->render("homeweb.html.twig", array(
+            'posts' => $posts,
+            'active' => 'home',
+            'devices' => $devices
+        ));
+    }
+
     //场地列表
     /**
      * @Route("/labLists", name="labLists")

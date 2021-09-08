@@ -3,18 +3,20 @@
 {% block body %}
 
 
-<div class="top-box">
-    <div class="top-left">
-        <a href="{{ path('homepage') }}">
-            <div class="back-logo">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#898989" class="bi bi-chevron-left" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-                </svg>
-            </div>
-        </a>
+    <div class="top-box">
+        <div class="top-left">
+            <a href="{{ path('homepage') }}">
+                <div class="back-logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#898989"
+                         class="bi bi-chevron-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                              d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                    </svg>
+                </div>
+            </a>
+        </div>
     </div>
-</div>
-    <div id="carouselExampleIndicators" class="carousel slide lab-carousel" data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide lab-carousel lab-carousel-2" data-ride="carousel">
         <ol class="carousel-indicators Indicator-list">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -32,29 +34,53 @@
             </div>
         </div>
     </div>
-<div class="instruction">
-<div class="instruction-name">{{ labData.title }}</div>
-<div class="instruction-content">
-    <div class="content-txt">
-        {{ labData.content }}
-        <div class="content-btn">更多</div>
-    </div>
-</div>
-<div class="instruction-use">
-    <div class="use-content">
-        <div class="open-time">开放时间：周一至周五</div>
-        <div class="use">用途：{{ labData.sketch }}</div>
-        <div class="res">可预约状态:{{ labData.status }}
-            <div class="res-sta"></div>
+    <div class="instruction">
+        <div class="instruction-name">{{ labData.title }}</div>
+        <div class="instruction-content">
+            <div class="content-txt">
+                {{ labData.content }}
+                <div class="content-btn">更多</div>
+            </div>
         </div>
-        <div class="experimenter">实验员信息：实验员的相关信息</div>
+        <div class="instruction-use">
+            <div class="use-content">
+                <div class="open-time">开放时间：周一至周五</div>
+                <div class="use">用途：{{ labData.sketch }}</div>
+                <div class="res">可预约状态:{{ labData.status }}
+                    <div class="res-sta"></div>
+                </div>
+                <div class="experimenter">实验员信息：实验员的相关信息</div>
+            </div>
+        </div>
+        <div class="btn">
+            <a href="{{ path('labNotice') }}">
+                <button>现在预约</button>
+            </a>
+        </div>
     </div>
-</div>
-<div class="btn">
-    <a href="{{ path('labNotice') }}">
-        <button>现在预约</button>
-    </a>
-</div>
-</div>
+{#    <div class="instruction-2">#}
+{#        <div class="instruction-name">{{ labData.title }}</div>#}
+{#        <div class="instruction-content">#}
+{#            <div class="content-txt">#}
+{#                {{ labData.content }}#}
+{#                <div class="content-btn">更多</div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="instruction-use">#}
+{#            <div class="use-content">#}
+{#                <div class="open-time">开放时间：周一至周五</div>#}
+{#                <div class="use">用途：{{ labData.sketch }}</div>#}
+{#                <div class="res">可预约状态:{{ labData.status }}#}
+{#                    <div class="res-sta"></div>#}
+{#                </div>#}
+{#                <div class="experimenter">实验员信息：实验员的相关信息</div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="btn">#}
+{#            <a href="{{ path('labNotice') }}">#}
+{#                <button>现在预约</button>#}
+{#            </a>#}
+{#        </div>#}
+{#    </div>#}
 
 {% endblock %}
