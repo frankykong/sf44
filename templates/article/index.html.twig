@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminMenu.html.twig' %}
 
 {% block title %}Article index{% endblock %}
 
@@ -32,8 +32,8 @@
 {#                <td>{{ article.thumbnailBig }}</td>#}
                 <td>{{ article.status }}</td>
                 <td>{{ article.hits }}</td>
-                <td>{{ article.createdTime }}</td>
-                <td>{{ article.updateTime }}</td>
+                <td>{{ article.createdTime|date }}</td>
+                <td>{{ article.updateTime|date }}</td>
                 <td>
                     <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
                     <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>

@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\ArticleRepository;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
@@ -66,12 +68,18 @@ class Article
     private $hits;
 
     /**
-     * @ORM\Column(type="integer")
+     * @var DateTimeInterface|null
+     *
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
      */
     private $createdTime;
 
     /**
-     * @ORM\Column(type="integer")
+     * @var DateTimeInterface|null
+     *
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
      */
     private $updateTime;
 
@@ -93,7 +101,6 @@ class Article
     public function setTitle(string $title): self
     {
         $this->title = $title;
-
         return $this;
     }
 
@@ -105,7 +112,6 @@ class Article
     public function setTagIds(?string $tagIds): self
     {
         $this->tagIds = $tagIds;
-
         return $this;
     }
 
@@ -117,7 +123,6 @@ class Article
     public function setBody(?string $body): self
     {
         $this->body = $body;
-
         return $this;
     }
 
@@ -129,7 +134,6 @@ class Article
     public function setThumbnailSmall(?string $thumbnailSmall): self
     {
         $this->thumbnailSmall = $thumbnailSmall;
-
         return $this;
     }
 
@@ -141,7 +145,6 @@ class Article
     public function setThumbnailBig(?string $thumbnailBig): self
     {
         $this->thumbnailBig = $thumbnailBig;
-
         return $this;
     }
 
@@ -153,7 +156,6 @@ class Article
     public function setStatus(int $status): self
     {
         $this->status = $status;
-
         return $this;
     }
 
@@ -165,31 +167,28 @@ class Article
     public function setHits(?int $hits): self
     {
         $this->hits = $hits;
-
         return $this;
     }
 
-    public function getCreatedTime(): ?int
+    public function getCreatedTime()
     {
         return $this->createdTime;
     }
 
-    public function setCreatedTime(int $createdTime): self
+    public function setCreatedTime( $createdTime)
     {
         $this->createdTime = $createdTime;
-
         return $this;
     }
 
-    public function getUpdateTime(): ?int
+    public function getUpdateTime()
     {
         return $this->updateTime;
     }
 
-    public function setUpdateTime(int $updateTime): self
+    public function setUpdateTime( $updateTime)
     {
         $this->updateTime = $updateTime;
-
         return $this;
     }
 
@@ -201,7 +200,6 @@ class Article
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
-
         return $this;
     }
 
@@ -219,7 +217,6 @@ class Article
             $this->attachments[] = $attachment;
             $attachment->setArticle($this);
         }
-
         return $this;
     }
 
@@ -231,7 +228,6 @@ class Article
                 $attachment->setArticle(null);
             }
         }
-
         return $this;
     }
 }

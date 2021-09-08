@@ -1,4 +1,4 @@
-{% extends 'admin.html.twig' %}
+{% extends 'adminMenu.html.twig' %}
 
 {% block title %}Category{% endblock %}
 
@@ -15,11 +15,7 @@
                 <th>Name</th>
                 <td>{{ category.name }}</td>
             </tr>
-            <tr>
-                <th>ParentId</th>
-                <td>{{ category.parentId }}</td>
-            </tr>
-            <tr>
+                    <tr>
                 <th>Description</th>
                 <td>{{ category.description }}</td>
             </tr>

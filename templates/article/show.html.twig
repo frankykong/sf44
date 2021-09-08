@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminMenu.html.twig' %}
 
 {% block title %}Article{% endblock %}
 
@@ -41,11 +41,11 @@
             </tr>
             <tr>
                 <th>CreatedTime</th>
-                <td>{{ article.createdTime }}</td>
+                <td>{{ article.createdTime|date }}</td>
             </tr>
             <tr>
                 <th>UpdateTime</th>
-                <td>{{ article.updateTime }}</td>
+                <td>{{ article.updateTime|date }}</td>
             </tr>
         </tbody>
     </table>

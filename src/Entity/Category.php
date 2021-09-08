@@ -3,12 +3,18 @@
 namespace App\Entity;
 
 use App\Repository\CategoryRepository;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+use Gedmo\Mapping\Annotation as Gedmo;
+
+
 /**
- * @ORM\Entity(repositoryClass=CategoryRepository::class)
+ * @Gedmo\Tree(type="nested")
+ * @ORM\Table(name="category")
+ * @ORM\Entity(repositoryClass="Gedmo\Tree\Entity\Repository\NestedTreeRepository")
  */
 class Category
 {
@@ -20,28 +26,89 @@ class Category
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=64)
      */
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="category")
+     * @var Category|null
+     * @Gedmo\TreeRoot
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category")
      */
-    private $article;
+    private $root;
 
     /**
+     * @var Category|null
+     * @Gedmo\TreeParent
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="children")
+     */
+    private $parent;
+
+    /**
+     * @var Category
+     * @ORM\OneToMany(targetEntity="App\Entity\Category", mappedBy="parent")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $children;
+
+    /**
+     * @var int|null
+     *
+     * @Gedmo\TreeLeft
      * @ORM\Column(type="integer")
      */
-    private $parentId;
+    private $lft;
 
     /**
-     * @ORM\Column(type="text")
+     * @var int|null
+     *
+     * @Gedmo\TreeLevel
+     * @ORM\Column(type="integer")
      */
-    private $description;
+    private $lvl;
+
+    /**
+     * @var int|null
+     *
+     * @Gedmo\TreeRight
+     * @ORM\Column(type="integer")
+     */
+    private $rgt;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Category", mappedBy="Category")
+     */
+    private $article;
 
     public function __construct()
     {
         $this->article = new ArrayCollection();
+        //$this->childrens = new ArrayCollection();
+    }
+
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    public function setChildren(Category $children): void
+    {
+        $this->children = $children;
+    }
+
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    public function setParent(Category $parent = null): void
+    {
+        $this->parent = $parent;
+    }
+
+    public function getRoot()
+    {
+        return $this->root;
     }
 
     public function getId(): ?int
@@ -61,32 +128,8 @@ class Category
         return $this;
     }
 
-    public function getParentId(): ?int
-    {
-        return $this->parentId;
-    }
-
-    public function setParentId(int $parentId): self
-    {
-        $this->parentId = $parentId;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
     /**
-     * @return Collection|Article[]
+     * @return Collection|article[]
      */
     public function getArticle(): Collection
     {
@@ -99,9 +142,9 @@ class Category
             $this->article[] = $article;
             $article->setCategory($this);
         }
-
         return $this;
     }
+
 
     public function removeArticle(Article $article): self
     {
@@ -118,5 +161,4 @@ class Category
     public function __toString(){
         return $this->name;
     }
-
 }

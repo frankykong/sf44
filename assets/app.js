@@ -26,7 +26,15 @@ require("tinymce/skins/ui/oxide/skin.min.css");
 let form = document.querySelector('#tinymce_editor');
 
 tinymce.init({
+
     selector: '#article_body',
+    // fix invalid form control with name is not focusable
+    setup: function (editor) {
+        editor.on('change', function () {
+            tinymce.triggerSave();
+        });
+    },
+
     theme: "silver",
     skin: false,
     content_style: false,
