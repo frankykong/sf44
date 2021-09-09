@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="keywords" content="{% block keywords %}{% endblock %}"/>
+    <meta name="description" content="{% block description %}{% endblock %}"/>
+    <link href="{{ asset('https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css') }}"
+          rel="stylesheet"/>
+    <link href="{{ asset('https://cdn.bootcdn.net/ajax/libs/Swiper/6.8.0/swiper-bundle.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('/Command/css/common.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('/Command/css/base.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('/Command/css/template.css') }}" rel="stylesheet"/>
+    <script src="{{ asset('https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js') }}"></script>
+    <script src="{{ asset('https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('https://cdn.bootcdn.net/ajax/libs/Swiper/6.8.0/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('https://cdn.jsdelivr.net/npm/wangeditor@latest/dist/wangEditor.min.js') }}"></script>
+    <script src="{{ asset('/Command/jQuery/base.js') }}"></script>
+    {% block header %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    {{ encore_entry_link_tags('app') }}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body>
+
+{% block navBar %}{% endblock %}
+{% block content %}{% endblock %}
+
+<div class="container">
+    <div class="index-top-2">
+        <div class="top-index">
+            <div class="index-top-logo-2">
+                <img src="/Command/images/Frame 181.png" alt="">
+            </div>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 home-nav">
+                        <li class="nav-item nav-item-show active">
+                            <a {% if active == 'home' %} class="nav-link active activeSize" {% endif %} href="{{ path('homepageweb') }}">学校首页</a>
+                        </li>
+                        <li class="nav-item">
+                            <a {% if active == 'equipment' %} class="nav-link active activeSize" {% endif %} href="{{ path('equipmentListweb') }}">设备浏览</a>
+                        </li>
+                        <li class="nav-item">
+                            <a {% if active == 'labLists' %} class="nav-link active activeSize" {% endif %} href="{{ path('labListsweb') }}">场地浏览</a>
+                        </li>
+                        <li class="nav-item">
+                            <a {% if active == 'projectLists' %} class="nav-link active activeSize" {% endif %} href="{{ path('projectListsweb') }}">项目浏览</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a {% if active == 'worksList' %} class="nav-link active activeSize" {% endif %} href="{{ path('worksListweb') }}">作品展示</a>
+                        </li>
+                        <li class="nav-item nav-item-show">
+                            <a {% if active == 'my' %} class="nav-link active activeSize" {% endif %} href="{{ path('myweb') }}">我的</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="app">
+        {% block body %}{% endblock %}
+        <div class="bottom-info">
+            <ul>
+                <li>关于我们</li>
+                <li>加入我们</li>
+                <li>使用条款</li>
+                <li>意见建议</li>
+            </ul>
+            <div class="bottom-info-address">Copyright © 2015 app.art-cloud.com their respective owners
+                课程内容版权均归口可云所有 粤ICP备16092596号
+            </div>
+        </div>
+        {% block footer %}{% endblock %}
+    </div>
+</div>
+
+{{ encore_entry_script_tags('app') }}
+
+</body>
+</html>

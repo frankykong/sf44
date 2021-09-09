@@ -1,4 +1,4 @@
-{% extends 'browser.html.twig' %}
+{% extends 'browserweb.html.twig' %}
 {% block body %}
     <div class="back-bg-top">
         <img class="auto-img" src="/Command/images/19.jpg">
@@ -11,44 +11,41 @@
     <div class="top-box">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="top-left">
-                <a href="{{ path('homepage') }}">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#FFFFFF"
-                         class="bi bi-chevron-left" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                              d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                <a href="{{ path('homepageweb') }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#FFFFFF" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
                     </svg>
                 </a>
-                <div class="menu-name">项目浏览</div>
+                <div class="menu-name">设备浏览</div>
             </div>
             <!-- a标签影响汉堡包按钮位置 -->
             <a class="navbar-brand" href="#"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- 下拉菜单内容 -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item nav-item-show">
-                        <a class="nav-link active" href="{{ path('homepage') }}">首页</a>
+                        <a class="nav-link active" href="{{ path('homepageweb') }}">首页</a>
                     </li>
                     <!-- <li class="nav-item nav-item-show">
                         <a class="nav-link active" href="./workshow.html">作品</a>
                     </li> -->
-                    <li class="nav-item ">
-                        <a class="nav-link active" aria-current="page" href="{{ path('equipmentList') }}">设备浏览</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link active" aria-current="page" href="{{ path('labLists') }}">场地浏览</a>
-                    </li>
                     <li class="nav-item active">
-                        <a class="nav-link active" aria-current="page" href="{{ path('projectLists') }}">项目浏览</a>
+                        <a class="nav-link active" aria-current="page" href="{{path('equipmentListweb')}}">设备浏览</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link active" href="{{ path('worksList') }}">作品展示</a>
+                        <a class="nav-link active" aria-current="page" href="{{ path('labListsweb') }}">场地浏览</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ path('projectListsweb') }}">项目浏览</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link active" href="{{ path('worksListweb') }}">作品展示</a>
                     </li>
                     <li class="nav-item nav-item-show">
-                        <a class="nav-link active" href="{{ path('my') }}">我的</a>
+                        <a class="nav-link active" href="{{ path('myweb') }}">我的</a>
                     </li>
                 </ul>
             </div>
@@ -56,12 +53,11 @@
     </div>
 
     {% block header %}
-        {# <link href="{{ asset('/Command/css/equipmentList.css') }}" rel="stylesheet" /> #}
+{#        <link href="{{ asset('/Command/css/equipmentList.css') }}" rel="stylesheet" />#}
     {% endblock %}
     <div class="search">
         <input type="text">
-        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="#999999" class="bi bi-search"
-             viewBox="0 0 16 16">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="#999999" class="bi bi-search" viewBox="0 0 16 16">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
         </svg>
     </div>
@@ -78,19 +74,19 @@
     </div>
     <div class="list project-list-top">
         <ul class="list-list">
-            {% for projectData in projectData %}
-                <a href="{{ path('projectDetails',{ 'id': projectData.id }) }}">
+            {% for equipmentData in equipmentData %}
+                <a href="{{ path('equipmentDetailweb',{ 'id': equipmentData.id }) }}">
                     <li>
                         <div class="list-img">
-                            <img src="{{ asset(projectData.userImg) }}" alt="">
+                            <img src="{{ asset(equipmentData.deviceImage) }}" alt="">
                         </div>
                         <div class="list-txt">
                             <div class="list-txt-info">
-                                <div class="list-txt-name">{{ projectData.userTitle }}</div>
-                                <div class="list-txt-model">{% if projectData.userTime %}{{ projectData.userTime|date('Y-m-d') }}{% endif %}</div>
+                                <div class="list-txt-name">{{ equipmentData.deviceTitle }}</div>
+                                <div class="list-txt-model">{% if equipmentData.deviceTime %}{{ equipmentData.deviceTime|date('Y-m-d') }}{% endif %}</div>
                             </div>
                             <div class="list-love">
-                                {# 可租借余数：{{ projectData.userContent }} #}
+                                可租借余数：{{ equipmentData.deviceStatus }}
                             </div>
                         </div>
                     </li>
@@ -99,17 +95,20 @@
         </ul>
     </div>
     <div class="list project-list-top-2">
-        <ul class="list-list list-list-2">
-            {% for projectData in projectData %}
-                <a href="{{ path('projectDetails',{ 'id': projectData.id }) }}">
+        <ul class="list-list  list-list-3">
+            {% for equipmentData in equipmentData %}
+                <a href="{{ path('equipmentDetailweb',{ 'id': equipmentData.id }) }}">
                     <li>
                         <div class="list-img">
-                            <img src="{{ asset(projectData.userImg) }}" alt="">
+                            <img src="{{ asset(equipmentData.deviceImage) }}" alt="">
                         </div>
                         <div class="list-txt">
                             <div class="list-txt-info">
-                                <div class="list-txt-name">{{ projectData.userTitle }}</div>
-                                <div class="list-txt-model">{{ projectData.userContent }}</div>
+                                <div class="list-txt-name">{{ equipmentData.deviceTitle }}</div>
+                                <div class="list-txt-model">{% if equipmentData.deviceTime %}{{ equipmentData.deviceTime|date('Y-m-d') }}{% endif %}</div>
+                            </div>
+                            <div class="list-love">
+                                可租借余数：{{ equipmentData.deviceStatus }}
                             </div>
                         </div>
                     </li>

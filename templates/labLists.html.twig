@@ -1,5 +1,8 @@
 {% extends 'browser.html.twig' %}
 {% block body %}
+    <div class="back-bg-top">
+        <img class="auto-img" src="/Command/images/19.jpg">
+    </div>
     <div class="back-bg">
         <div class="round-bg"></div>
         <div class="round-min"></div>
@@ -33,7 +36,7 @@
                         <a class="nav-link active" aria-current="page" href="{{path('equipmentList')}}">设备浏览</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link active" aria-current="page" href="#">场地浏览</a>
+                        <a class="nav-link active" aria-current="page" href="{{path('labLists')}}">场地浏览</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ path('projectLists') }}">项目浏览</a>
@@ -71,6 +74,28 @@
     </div>
     <div class="list project-list-top">
         <ul class="list-list">
+            {% for labData in labData %}
+                <a href="{{ path('equipmentDetail',{ 'id': labData.id }) }}">
+                    <li>
+                        <div class="list-img">
+                            <img src="{{ asset(labData.img) }}" alt="">
+                        </div>
+                        <div class="list-txt">
+                            <div class="list-txt-info">
+                                <div class="list-txt-name">{{ labData.title }}</div>
+                                <div class="list-txt-model">{% if labData.time %}{{ labData.time|date('Y-m-d') }}{% endif %}</div>
+                            </div>
+                            <!-- <div class="list-love">
+                                可租借余数：17
+                            </div> -->
+                        </div>
+                    </li>
+                </a>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="list project-list-top-2">
+        <ul class="list-list list-list-4">
             {% for labData in labData %}
                 <a href="{{ path('equipmentDetail',{ 'id': labData.id }) }}">
                     <li>

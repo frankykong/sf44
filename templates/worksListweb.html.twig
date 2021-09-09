@@ -1,4 +1,4 @@
-{% extends 'browser.html.twig' %}
+{% extends 'browserweb.html.twig' %}
 {% block body %}
 
     {% block header %}
@@ -16,7 +16,7 @@
     <div class="top-box">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="top-left">
-                <a href="{{ path('homepage') }}">
+                <a href="{{ path('homepageweb') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#FFFFFF"
                          class="bi bi-chevron-left" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
@@ -35,25 +35,25 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item nav-item-show">
-                        <a class="nav-link active" href="{{ path('homepage') }}">首页</a>
+                        <a class="nav-link active" href="{{ path('homepageweb') }}">首页</a>
                     </li>
                     <!-- <li class="nav-item nav-item-show">
                         <a class="nav-link active" href="./workshow.html">作品</a>
                     </li> -->
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ path('equipmentList') }}">设备浏览</a>
+                        <a class="nav-link active" aria-current="page" href="{{ path('equipmentListweb') }}">设备浏览</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ path('labLists') }}">场地浏览</a>
+                        <a class="nav-link active" aria-current="page" href="{{ path('labListsweb') }}">场地浏览</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ path('projectLists') }}">项目浏览</a>
+                        <a class="nav-link active" aria-current="page" href="{{ path('projectListsweb') }}">项目浏览</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link active" href="{{ path('worksList') }}">作品展示</a>
+                        <a class="nav-link active" href="{{ path('worksListweb') }}">作品展示</a>
                     </li>
                     <li class="nav-item nav-item-show">
-                        <a class="nav-link active" href="{{ path('my') }}">我的</a>
+                        <a class="nav-link active" href="{{ path('myweb') }}">我的</a>
                     </li>
                 </ul>
             </div>
@@ -80,13 +80,13 @@
     <div class="work-list">
         <ul class="work-ls">
             {% for worksData in worksData %}
-                <a href="{{ path('workDetail',{ 'id': worksData.id }) }}">
+                <a href="{{ path('workDetailweb',{ 'id': worksData.id }) }}">
                     <li>
                         <div class="work-box">
                             <div class="box-top">
                                 <div class="box-top-left">
                                     <div class="avatar">
-                                        <img src="Command/image/03.webp" alt="">
+                                        <img src="/Command/image/03.webp" alt="">
                                         <img src="{{ asset(worksData.userImg) }}" alt="">
                                     </div>
                                     <div class="box-top-det">
@@ -128,7 +128,7 @@
     <div class="work-list-2">
         <ul class="work-ls">
             {% for worksData in worksData %}
-                <a href="{{ path('workDetail',{ 'id': worksData.id }) }}">
+                <a href="{{ path('workDetailweb',{ 'id': worksData.id }) }}">
                     <li>
                         <div class="work-box">
                             <div class="box-top">

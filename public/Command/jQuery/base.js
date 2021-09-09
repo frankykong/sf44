@@ -1,9 +1,14 @@
 window.onload = function (){
     $('.collapse .navbar-nav li').click(function(){
         var index = $(this).index();
-        console.log(index);
         $('collapse .navbar-nav li').removeClass('active');
         $(this).addClass('active');
+    });
+    $('.info-2 .my-info-list .info-left').click(function(){
+        var index = $(this).index();
+        $('.info-2 .my-info-list .info-left').removeClass('active');
+        $(this).addClass('active');
+        console.log(111)
     });
 }
 window.onresize = function(){

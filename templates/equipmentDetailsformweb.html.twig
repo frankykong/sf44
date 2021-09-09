@@ -1,23 +1,25 @@
-{% extends 'browser.html.twig' %}
+{% extends 'browserweb.html.twig' %}
 {% block body %}
 
     {% block header %}
-        {# <script src="{{ asset('Command/jQuery/index.js') }}"></script> #}
+        {#    <script src="{{ asset('Command/jQuery/index.js')
+
+
+         }}"></script>#}
     {% endblock %}
     <div class="back-bg">
         <div class="lab-bg"></div>
     </div>
     <div class="top-box">
         <div class="top-left top">
-            <a href="{{ path('labNotice') }}">
+            <a href="{{ path('labNoticeweb') }}">
                 <div class="back-logo">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#FFFFFF"
-                         class="bi bi-chevron-left" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#FFFFFF" class="bi bi-chevron-left" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
                     </svg>
                 </div>
-                <div class="menu-name">1号楼101实验室
-                    <div>场地预约</div>
+                <div class="menu-name">虚拟遥控器
+                    <div>设备预约</div>
                 </div>
             </a>
         </div>
@@ -40,39 +42,39 @@
             </div>
         </div>
     </div>
-    <div class="form-title">1号楼101实验室
-        <div class="form-Options">场地预约</div>
+    <div class="form-title">虚拟遥控器
+        <div class="form-Options">设备预约</div>
     </div>
     <div class="list lab-top-list lab-top-list-2">
-        <form>
+        <form method="post">
             <div class="form-group">
                 <label for="exampleInputEmail1">姓名</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="email" class="form-control" id="reserveName" aria-describedby="emailHelp">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Email</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <input type="password" class="form-control" id="reserveEmail">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">电话</label>
-                <input type="telephone" class="form-control" id="exampleInputPassword1">
+                <input type="telephone" class="form-control" id="reservePhone">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">身份证号码</label>
-                <input type="IDcard" class="form-control" id="exampleInputPassword1">
+                <input type="IDcard" class="form-control" id="reserveNumber">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">指导老师</label>
-                <input type="IDcard" class="form-control" id="exampleInputPassword1">
+                <input type="IDcard" class="form-control" id="reserveTeacher">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">实验课程</label>
-                <input type="IDcard" class="form-control" id="exampleInputPassword1">
+                <input type="IDcard" class="form-control" id="reserveClass }}">
             </div>
         </form>
         <form>
             <div class="form-group ">
-                <label for="exampleInputPassword1">预约日期</label>
+                <label for="exampleInputPassword1">借还日期</label>
                 <ul class="res-list">
                     <li>
                         2021-8-17
@@ -95,25 +97,25 @@
                 </ul>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">使用日期</label>
+                <label for="exampleInputPassword1">归还日期</label>
                 <ul class="use-list">
                     <li>
-                        9:00-10:00
+                        2021-8-17
                     </li>
                     <li>
-                        10:00-11:00
+                        2021-8-18
                     </li>
                     <li>
-                        11:00-12:00
+                        2021-8-19
                     </li>
                     <li>
-                        12:00-13:00
+                        2021-8-20
                     </li>
                     <li>
-                        13:00-14:00
+                        2021-8-21
                     </li>
                     <li>
-                        14:00-15:00
+                        2021-8-22
                     </li>
                 </ul>
             </div>
@@ -126,13 +128,12 @@
         </form>
     </div>
     <div class="btn lab-btn form-btn">
-        {# <a href="{{ path('labDetail',{ 'id': post.id }) }}"> #}
+        {#        <a href="{{ path('labDetail',{ 'id': post.id }) }}">#}
         <a class="Previous-btn" href="#">
             <button>上一步</button>
         </a>
-        <a href="{{ path('labConfirm') }}">
+        <a href="{{ path('labConfirmweb') }}">
             <button>下一步</button>
         </a>
     </div>
-
 {% endblock %}
