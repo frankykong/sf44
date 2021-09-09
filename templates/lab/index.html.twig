@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lab index{% endblock %}
+
+{% block body %}
+    <h1>Lab index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Identifier</th>
+                <th>Description</th>
+                <th>CreatedTime</th>
+                <th>UpdateTime</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lab in labs %}
+            <tr>
+                <td>{{ lab.id }}</td>
+                <td>{{ lab.name }}</td>
+                <td>{{ lab.identifier }}</td>
+                <td>{{ lab.description }}</td>
+                <td>{{ lab.createdTime ? lab.createdTime|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ lab.updateTime ? lab.updateTime|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('lab_show', {'id': lab.id}) }}">show</a>
+                    <a href="{{ path('lab_edit', {'id': lab.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('lab_new') }}">Create new</a>
+{% endblock %}

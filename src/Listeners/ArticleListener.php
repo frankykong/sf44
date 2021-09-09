@@ -75,10 +75,9 @@ class ArticleListener
                     $this->attachmentManager->removeAttachment($record->getFilename());
                 }
             }
-            //$this->entityManager->flush();
+            $this->entityManager->flush();
 
 //            $em->flush();
-           // $this->entityManager->flush();
 
         };
     }

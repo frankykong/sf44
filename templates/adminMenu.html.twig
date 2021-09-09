@@ -1,5 +1,13 @@
 {% extends 'admin.html.twig' %}
 
+
+ {% block header %}
+     {{ encore_entry_link_tags('admin') }}
+ {% endblock %}
+
+
+
+
 {% block navBar %}
 
     <ul>
@@ -12,3 +20,9 @@
     </ul>
 
 {% endblock %}
+
+
+{#{% block javascripts %}#}
+{#    {{ parent() }}#}
+{#    {{ encore_entry_script_tags('admin') }}#}
+{#{% endblock %}#}

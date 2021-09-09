@@ -76,14 +76,21 @@ class Category
     private $rgt;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Category", mappedBy="Category")
+     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="category")
      */
     private $article;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Lab::class, mappedBy="category")
+     */
+    private $lab;
 
     public function __construct()
     {
         $this->article = new ArrayCollection();
         //$this->childrens = new ArrayCollection();
+        $this->lab = new ArrayCollection();
+        $this->children = new ArrayCollection();
     }
 
     public function getChildren()
@@ -160,5 +167,112 @@ class Category
 
     public function __toString(){
         return $this->name;
+    }
+
+    /**
+     * @return Collection|Lab[]
+     */
+    public function getlab(): Collection
+    {
+        return $this->lab;
+    }
+
+    public function addlab(Lab $lab): self
+    {
+        if (!$this->lab->contains($lab)) {
+            $this->lab[] = $lab;
+            $lab->setCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCreatedTime(Lab $lab): self
+    {
+        if ($this->lab->removeElement($lab)) {
+            // set the owning side to null (unless already changed)
+            if ($lab->getCategory() === $this) {
+                $lab->setCategory(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getLft(): ?int
+    {
+        return $this->lft;
+    }
+
+    public function setLft(int $lft): self
+    {
+        $this->lft = $lft;
+
+        return $this;
+    }
+
+    public function getLvl(): ?int
+    {
+        return $this->lvl;
+    }
+
+    public function setLvl(int $lvl): self
+    {
+        $this->lvl = $lvl;
+
+        return $this;
+    }
+
+    public function getRgt(): ?int
+    {
+        return $this->rgt;
+    }
+
+    public function setRgt(int $rgt): self
+    {
+        $this->rgt = $rgt;
+
+        return $this;
+    }
+
+    public function setRoot(?self $root): self
+    {
+        $this->root = $root;
+
+        return $this;
+    }
+
+    public function addChild(Category $child): self
+    {
+        if (!$this->children->contains($child)) {
+            $this->children[] = $child;
+            $child->setParent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChild(Category $child): self
+    {
+        if ($this->children->removeElement($child)) {
+            // set the owning side to null (unless already changed)
+            if ($child->getParent() === $this) {
+                $child->setParent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function removeLab(Lab $lab): self
+    {
+        if ($this->lab->removeElement($lab)) {
+            // set the owning side to null (unless already changed)
+            if ($lab->getCategory() === $this) {
+                $lab->setCategory(null);
+            }
+        }
+
+        return $this;
     }
 }

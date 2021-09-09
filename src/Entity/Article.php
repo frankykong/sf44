@@ -28,11 +28,6 @@ class Article
     private $title;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="article")
-     */
-    private $category;
-
-    /**
      * @ORM\OneToMany (targetEntity="App\Entity\Attachment", mappedBy="article")
      */
     private $attachments;
@@ -82,6 +77,11 @@ class Article
      * @ORM\Column(type="datetime")
      */
     private $updateTime;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="article")
+     */
+    private $category;
 
     public function __construct()
     {
