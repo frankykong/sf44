@@ -26,15 +26,14 @@
         </ol>
         <div class="carousel-inner projectDetail">
             <div class="carousel-item active">
-                <img src="{{ asset(equipmentData.deviceImage) }}" alt="">
-
-                <img src="/Command/image/04.webp" alt="">
+{#                <img src="{{ asset(equipmentData.deviceImage) }}" alt="">#}
+                <img src="/Command/image/6.jpg" alt="">
             </div>
             <div class="carousel-item">
-                <img src="/Command/image/05.webp" alt="">
+                <img src="/Command/image/7.jpg" alt="">
             </div>
             <div class="carousel-item">
-                <img src="/Command/image/06.webp" alt="">
+                <img src="/Command/image/8.jpg" alt="">
             </div>
         </div>
     </div>
@@ -58,6 +57,47 @@
         <div class="btn">
             <a href="{{ path('equipmentNotice') }}">
                 <button>现在预约</button>
+            </a>
+        </div>
+    </div>
+    <div class="instruction-2">
+        <div class="instruction-3">
+        <div class="instruction-name">{{ equipmentData.deviceTitle }}</div>
+            <div class="instruction-box">
+                <div class="instruction-content">
+                    <div class="content-txt">
+                        {{equipmentData.deviceContent }}
+                        {#                <div class="content-btn">更多</div>#}
+                    </div>
+                </div>
+                <div class="instruction-use">
+                    <div class="use-content">
+                        <div class="open-time"></div>
+                        <div class="use">用途：{{ equipmentData.deviceSketch }}</div>
+                        <div class="res">可预约状态:
+                            <div class="res-sta">{{ equipmentData.deviceStatus }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="list-title">场地及设备租借流程需知</div>
+    <div class="list lab-list labNotice-box">
+        <div class="list-info">
+            <div class="list-text">场地租赁注意事项：</div>
+            一、会议场地租赁的基本项 会议的时间、会议的地点、会议的规模是会议的基本项也是会议场地租赁的基本项。只有确认了基本项之后才能根据这些基本的要求框架去大概范围的寻找可以满足会议要求的会议场地。
+            二、会议场地租赁的附属要求
+            在确认了大致可满足会议要求的会场资源后，那就要开始筛选了。那么会议的附属要求都有哪些呢?会场的尺寸、摆台、形状、层高、音响系统等等最终确认了您的会场需求的条件。在您可选择的大致范围内应该又有很多不符合条件的场地资源被PASS掉了。
+            三、会议场地租赁的价格 价格往往在所有条件满足会议需求之后起到了一个决定性的因素。
+            四、场地租赁合同
+            租赁合同格式、租赁合同注意事项，住房租赁合同、厂房出租合同。但是在会议场地的租赁中。一定要注意价格的范畴及单位。按场计价和按天计价有本质的区别，一般一场会议为4小时规定。大致约为半天。有的酒店一天是按三场计算的。所以一定要明晰酒店的会场计价单位。而一天的计算是包含了上午，下午以及晚上。计价单位明晰之后那就是场地供应商所给予的搭建时间，一场会议的布置需要时间，而布置的时间是否免费，收费又收多少呢?所以只有在综合比较了所有情况下的价格才是最终可以参考比对的价格哦，是不是已经招到比较中意的场地啦。
+            五、会议场地租赁合同
+            在最终确定好会议场地后是不是要签合同了，签合同也是一门学问哦。一定要明晰所有之前确认的项目以及价格，白纸黑字写明。将结算帐号、结算方式和结算币种也要写清。包括酒店承诺给予的服务和会议场地免费配套的设施都有什么。当然大型的会议最好注明某一层面的场地方负责人是谁，以免会议进行时出现问题找不到对口的人。
+        </div>
+        <div class="btn">
+            <a href="{{ path('equipmentDetailsform') }}">
+                <button>确定并预约</button>
             </a>
         </div>
     </div>

@@ -24,7 +24,28 @@
             </a>
         </div>
     </div>
-    <div class="list lab-top-list">
+    <div id="carouselExampleIndicators" class="carousel slide lab-carousel lab-carousel-none" data-ride="carousel">
+        <ol class="carousel-indicators Indicator-list">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner projectDetail">
+            <div class="carousel-item active">
+                <img src="/Command/image/04.webp" alt="">
+            </div>
+            <div class="carousel-item">
+                <img src="/Command/image/05.webp" alt="">
+            </div>
+            <div class="carousel-item">
+                <img src="/Command/image/06.webp" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="form-title">虚拟遥控器
+        <div class="form-Options">设备预约</div>
+    </div>
+    <div class="list lab-top-list lab-top-list-2">
         <form method="post">
             <div class="form-group">
                 <label for="exampleInputEmail1">姓名</label>
@@ -50,6 +71,8 @@
                 <label for="exampleInputPassword1">实验课程</label>
                 <input type="IDcard" class="form-control" id="reserveClass }}">
             </div>
+            </form>
+            <form>
             <div class="form-group ">
                 <label for="exampleInputPassword1">借还日期</label>
                 <ul class="res-list">
@@ -103,11 +126,15 @@
                 </div>
             </div>
         </form>
-        <div class="btn lab-btn">
-            <a href="{{ path('labConfirm') }}">
-                <button type="submit">下一步</button>
-            </a>
-        </div>
+    </div>
+    <div class="btn lab-btn form-btn">
+        {#        <a href="{{ path('labDetail',{ 'id': post.id }) }}">#}
+        <a class="Previous-btn" href="#">
+            <button>上一步</button>
+        </a>
+        <a href="{{ path('labConfirm') }}">
+            <button>下一步</button>
+        </a>
     </div>
 
 {% endblock %}

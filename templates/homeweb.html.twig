@@ -9,7 +9,7 @@
         <div class="tap-index">
             <!-- 头部 -->
             <div class="index-top-logo">
-                <img src="Command/images/Frame 181.png" alt="">
+                <img src="/Command/images/Frame 181.png" alt="">
             </div>
             <div class="index-top">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="29" fill="#898989"
@@ -34,24 +34,24 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 home-nav">
                             <li class="nav-item nav-item-show active">
-                                <a class="nav-link active" href="{{ path('homepage') }}">首页</a>
+                                <a class="nav-link active" href="{{ path('homepageweb') }}">首页</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page"
-                                   href="{{ path('equipmentList') }}">设备浏览</a>
+                                   href="{{ path('equipmentListweb') }}">设备浏览</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ path('labLists') }}">场地浏览</a>
+                                <a class="nav-link active" aria-current="page" href="{{ path('labListsweb') }}">场地浏览</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page"
-                                   href="{{ path('projectLists') }}">项目浏览</a>
+                                   href="{{ path('projectListsweb') }}">项目浏览</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" href="{{ path('worksList') }}">作品展示</a>
+                                <a class="nav-link active" href="{{ path('worksListweb') }}">作品展示</a>
                             </li>
                             <li class="nav-item nav-item-show">
-                                <a class="nav-link active" href="{{ path('my') }}">我的</a>
+                                <a class="nav-link active" href="{{ path('myweb') }}">我的</a>
                             </li>
                         </ul>
                     </div>
@@ -66,13 +66,13 @@
                 </ol>
                 <div class="carousel-inner carousel-top-list">
                     <div class="carousel-item active">
-                        <img src="Command/image/01.webp" alt="">
+                        <img src="/Command/image/01.webp" alt="">
                     </div>
                     <div class="carousel-item">
-                        <img src="Command/image/02.webp" alt="">
+                        <img src="/Command/image/02.webp" alt="">
                     </div>
                     <div class="carousel-item">
-                        <img src="Command/image/03.webp" alt="">
+                        <img src="/Command/image/03.webp" alt="">
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                 <div class="interval-name">场地设施 <span>/ Venue facilities<span></span></div>
                 <ul class="swiper-wrapper carousel-list">
                     {% for post in posts %}
-                        <a href="{{ path('labDetail',{ 'id': post.id }) }}" class="swiper-slide">
+                        <a href="{{ path('labDetailweb',{ 'id': post.id }) }}" class="swiper-slide">
                             <li>
                                 <div class="carousel-image">
                                     <img src="{{ asset(post.Img) }}" alt="">
@@ -111,7 +111,7 @@
                 <div class="interval-name">设备 <span>/ Device browsing</span></div>
                 <ul class="list-list">
                     {% for devices in devices %}
-                        <a href="{{ path('equipmentDetail',{ 'id': devices.id }) }}">
+                        <a href="{{ path('equipmentDetailweb',{ 'id': devices.id }) }}">
                             <li class="list-list-li">
                                 <div class="list-list-box">
                                     <div class="list-img">
@@ -136,8 +136,6 @@
                 </ul>
             </div>
         </div>
-        <!-- <div class="tap-project"></div>
-        <div class="tap-work"></div> -->
     </div>
     <script>
         var swiper = new Swiper('.swiper-container', {

@@ -1,4 +1,4 @@
-{% extends 'browser.html.twig' %}
+{% extends 'browserweb.html.twig' %}
 {% block body %}
 
     {% block header %}
@@ -8,7 +8,7 @@
     </div>
     <div class="top-box">
         <div class="top-left top">
-            <a href="{{ path('labDetailsform') }}">
+            <a href="{{ path('labDetailsformweb') }}">
                 <div class="back-logo">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#FFFFFF"
                          class="bi bi-chevron-left" viewBox="0 0 16 16">
@@ -76,10 +76,10 @@
         </div>
         <div class="btn lab-btn form-btn">
             {# <a href="{{ path('labDetail',{ 'id': post.id }) }}"> #}
-            <a class="Previous-btn" href="{{ path("labDetailsform") }}">
+            <a class="Previous-btn" href="{{ path("labDetailsformweb") }}">
                 <button>上一步</button>
             </a>
-            <a href="{{ path('labSub') }}">
+            <a href="{{ path('labSubweb') }}">
                 <button>下一步</button>
             </a>
         </div>

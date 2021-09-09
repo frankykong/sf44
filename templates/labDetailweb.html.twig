@@ -1,11 +1,11 @@
-{% extends 'browser.html.twig' %}
+{% extends 'browserweb.html.twig' %}
 {% block header %}{% endblock %}
 {% block body %}
 
 
     <div class="top-box">
         <div class="top-left">
-            <a href="{{ path('homepage') }}">
+            <a href="{{ path('homepageweb') }}">
                 <div class="back-logo">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#898989"
                          class="bi bi-chevron-left" viewBox="0 0 16 16">
@@ -52,7 +52,7 @@
             </div>
         </div>
         <div class="btn">
-            <a href="{{ path('labNotice') }}">
+            <a href="{{ path('labNoticeweb') }}">
                 <button>现在预约</button>
             </a>
         </div>
@@ -94,7 +94,7 @@
             在最终确定好会议场地后是不是要签合同了，签合同也是一门学问哦。一定要明晰所有之前确认的项目以及价格，白纸黑字写明。将结算帐号、结算方式和结算币种也要写清。包括酒店承诺给予的服务和会议场地免费配套的设施都有什么。当然大型的会议最好注明某一层面的场地方负责人是谁，以免会议进行时出现问题找不到对口的人。
         </div>
         <div class="btn">
-            <a href="{{ path('labDetailsform') }}">
+            <a href="{{ path('labDetailsformweb') }}">
                 <button>确定并预约</button>
             </a>
         </div>

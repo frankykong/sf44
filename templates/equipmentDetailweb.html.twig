@@ -1,80 +1,82 @@
-{% extends 'browser.html.twig' %}
-{% block header %}{% endblock %}
+{% extends 'browserweb.html.twig' %}
+
 {% block body %}
+
+    {% block header %}
+
+    {% endblock %}
 
 
     <div class="top-box">
         <div class="top-left">
-            <a href="{{ path('homepage') }}">
+            <a href="{{ path('homepageweb') }}">
                 <div class="back-logo">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#898989"
-                         class="bi bi-chevron-left" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#898989" class="bi bi-chevron-left" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
                     </svg>
                 </div>
             </a>
         </div>
     </div>
-    <div id="carouselExampleIndicators" class="carousel slide lab-carousel lab-carousel-2" data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide lab-carousel" data-ride="carousel">
         <ol class="carousel-indicators Indicator-list">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
-        <div class="carousel-inner labDetail">
+        <div class="carousel-inner projectDetail">
             <div class="carousel-item active">
-                <img src="/Command/image/01.webp" alt="">
+                <img src="{{ asset(equipmentData.deviceImage) }}" alt="">
+
+                <img src="/Command/image/04.webp" alt="">
             </div>
             <div class="carousel-item">
-                <img src="/Command/image/02.webp" alt="">
+                <img src="/Command/image/05.webp" alt="">
             </div>
             <div class="carousel-item">
-                <img src="/Command/image/03.webp" alt="">
+                <img src="/Command/image/06.webp" alt="">
             </div>
         </div>
     </div>
     <div class="instruction">
-        <div class="instruction-name">{{ labData.title }}</div>
+        <div class="instruction-name">{{ equipmentData.deviceTitle }}</div>
         <div class="instruction-content">
             <div class="content-txt">
-                {{ labData.content }}
-                <div class="content-btn">更多</div>
+                {{equipmentData.deviceContent }}
+{#                <div class="content-btn">更多</div>#}
             </div>
         </div>
         <div class="instruction-use">
             <div class="use-content">
-                <div class="open-time">开放时间：周一至周五</div>
-                <div class="use">用途：{{ labData.sketch }}</div>
-                <div class="res">可预约状态:{{ labData.status }}
+                <div class="open-time"></div>
+                <div class="use">用途：{{ equipmentData.deviceSketch }}</div>
+                <div class="res">可预约状态:{{ equipmentData.deviceStatus }}
                     <div class="res-sta"></div>
                 </div>
-                <div class="experimenter">实验员信息：实验员的相关信息</div>
             </div>
         </div>
         <div class="btn">
-            <a href="{{ path('labNotice') }}">
+            <a href="{{ path('equipmentNoticeweb') }}">
                 <button>现在预约</button>
             </a>
         </div>
     </div>
     <div class="instruction-2">
         <div class="instruction-3">
-            <div class="instruction-name">{{ labData.title }}</div>
+            <div class="instruction-name">{{ equipmentData.deviceTitle }}</div>
             <div class="instruction-box">
                 <div class="instruction-content">
                     <div class="content-txt">
-                        {{ labData.content }}
-                        <div class="content-btn">更多</div>
+                        {{equipmentData.deviceContent }}
                     </div>
                 </div>
                 <div class="instruction-use">
                     <div class="use-content">
-                        <div class="open-time">开放时间：周一至周五</div>
-                        <div class="use">用途：{{ labData.sketch }}</div>
-                        <div class="res">预约状态:
-                            <div class="res-sta">{{ labData.status }}</div>
+                        <div class="open-time"></div>
+                        <div class="use">用途：{{ equipmentData.deviceSketch }}</div>
+                        <div class="res">可预约状态:
+                            <div class="res-sta">{{ equipmentData.deviceStatus }}</div>
                         </div>
-                        <div class="experimenter">实验员信息：实验员的相关信息</div>
                     </div>
                 </div>
             </div>
@@ -94,7 +96,7 @@
             在最终确定好会议场地后是不是要签合同了，签合同也是一门学问哦。一定要明晰所有之前确认的项目以及价格，白纸黑字写明。将结算帐号、结算方式和结算币种也要写清。包括酒店承诺给予的服务和会议场地免费配套的设施都有什么。当然大型的会议最好注明某一层面的场地方负责人是谁，以免会议进行时出现问题找不到对口的人。
         </div>
         <div class="btn">
-            <a href="{{ path('labDetailsform') }}">
+            <a href="{{ path('equipmentDetailsformweb') }}">
                 <button>确定并预约</button>
             </a>
         </div>

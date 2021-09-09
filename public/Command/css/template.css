@@ -1999,7 +1999,14 @@ h100 {
     .project-list-top-2,
     .info-2,
     .my-2,
-    .instruction-2{
+    .instruction-2,
+    .lab-carousel-none,
+    .list-title,
+    .labNotice-box,
+    .bi-3,
+    .lab-btn .Previous-btn,
+    .lab-com-work-2,
+    .lab-carousel-3{
         display: none;
     }
 }
@@ -2009,7 +2016,6 @@ h100 {
         min-width: 280px;
     }
 }
-
 @media (max-width: 767.98px) {
     .bottom-info .bottom-info-address {
         font-family: Roboto;
@@ -2020,7 +2026,6 @@ h100 {
         color: #898989;
     }
 }
-
 @media (max-width: 320.98px) {
     .index-top .bi-chat-square-dots {
         position: absolute;
@@ -2045,7 +2050,6 @@ h100 {
         margin-left: 6px;
     }
 }
-
 @media (max-width: 280.98px) {
     .tap-index .index-top .navbar input {
         display: inline-block;
@@ -2063,26 +2067,54 @@ h100 {
         color: #B5B5B5;
         margin-left: 16px;
     }
+    .top-box .top-left{
+        display: flex;
+        z-index: 1000;
+        width: 60%;
+    }
+    .class-ls {
+        width: 100%;
+        height: 24px;
+        margin: 20px auto 0;
+    }
+    .class-ls .class-box .class-list{
+        min-width: 280px;
+    }
+    .class-ls .class-box .class-list.project-list{
+        display: flex;
+        justify-content: space-around;
+    }
+    .class-ls .class-box .class-list.project-list li {
+        float: left;
+        width: 40px;
+        height: 24px;
+        background: rgba(80, 176, 253);
+        box-shadow: 0px 5px 11px rgb(218 218 218 / 25%);
+        border-radius: 71px;
+        font-family: Microsoft YaHei;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 10px;
+        text-align: center;
+        color: #ffff;
+        margin: 0 6px;
+    }
 }
-
 @media (min-width: 719.98px) {
     .tap-div .tap-index .carousel-top, .lab-carousel {
         height: 302px;
     }
 }
-
 @media (min-width: 959.98px) {
     .tap-div .tap-index .carousel-top, .lab-carousel {
         height: 466px;
     }
 }
-
 @media (min-width: 1139.98px) {
     .tap-div .tap-index .carousel-top, .lab-carousel {
         height: 590px;
     }
 }
-
 @media (min-width: 991.98px) {
     /*基本*/
     .tap-div .tap-index .index-top-logo,
@@ -2093,7 +2125,9 @@ h100 {
     .work-list,
     .my,
     .info,
-    .instruction{
+    .instruction,
+    .bi-2,
+    .lab-com-work{
         display: none;
     }
     .index-top-2 {
@@ -2362,7 +2396,7 @@ h100 {
     .info-2 .info-list-info{
         min-height: 300px;
     }
-    /*场地预约*/
+    /*场地、设备预约*/
     .lab-carousel .Indicator-list li {
         display: inline-block;
         width: 8px;
@@ -2379,7 +2413,224 @@ h100 {
         box-sizing: border-box;
         background-color: #FFFFFF;
     }
-    .lab-carousel-2{
-        padding-top: 88px;
+    .instruction-2{
+        background-color: #FFFFFF;
+    }
+    .instruction-3 {
+        width: 60%;
+        margin: 0 auto;
+    }
+    .lab-carousel-2,.lab-carousel{
+        transform: translate(0px);
+    }
+    .instruction-2 .instruction-3 .instruction-name{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 28px;
+        color: #4B4B4B;
+        padding: 25px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    }
+    .instruction-2 .instruction-3 .instruction-box {
+        display: flex;
+        margin-top: 2rem;
+    }
+    .instruction-2 .instruction-3 .instruction-box .instruction-content,.instruction-2 .instruction-3 .instruction-box .instruction-use{
+        width: 50%;
+    }
+    .instruction-2 .instruction-3 .instruction-box .instruction-content .content-txt{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 18px;
+        color: #898989;
+    }
+    .instruction-2 .instruction-3 .instruction-box .instruction-use .use-content div{
+        text-indent: 4rem;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 18px;
+        color: #4B4B4B;
+    }
+    .instruction-2 .instruction-3 .instruction-use .res .res-sta {
+        display: inline-block;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 18px;
+        color: #50B0FD !important;
+        text-indent: 0rem !important;
+    }
+    .labNotice-box{
+        width: 60%;
+        box-shadow: 0px 0px 0px;
+    }
+    .labNotice-box .list-text {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 9px;
+        line-height: 20px;
+        color: #1C243C;
+        margin: 0 auto;
+    }
+    .labNotice-box .btn a button{
+        color: #FFFFFF;
+        background: linear-gradient(180deg, #232D4B 0%, #232D4B 100%);
+    }
+    .list-title {
+        text-align: center;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 21px;
+        color: #232D4B;
+        padding-top: 35px;
+    }
+    /*预约表单*/
+    .form-title {
+        width: 80%;
+        margin: 0 auto;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 28px;
+        color: #4B4B4B;
+        padding: 45px 0 24px 0;
+        background-color: #F5F5F5;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    }
+    .form-title .form-Options{
+        display: inline-block;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 28px;
+        color: #FF8800;
+    }
+    .lab-top-list-2{
+        margin-top: 0px !important;
+        box-shadow: 0px 0px 0px !important;
+        background-color: #F5F5F5 !important;
+        display: flex !important;
+    }
+    .lab-top-list-2 form{
+        width: 50%;
+    }
+    .form-btn {
+        box-sizing: content-box;
+        display: flex;
+        width: 20%;
+        padding: 20px 0;
+        margin: 0 auto;
+    }
+    .form-btn a:nth-child(1) button{
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        border-right: 1px solid rgba(251, 251, 251, 0.5) !important;
+    }
+    .form-btn a:nth-child(2) button{
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border-left: 1px solid rgba(251, 251, 251, 0.5) !important;
+    }
+    .form-btn button{
+        background: #232D4B;
+    }
+    .list.lab-com .list-box .list-info-2 .info-hint{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 21px;
+        color: #2A3451;
+    }
+    .list.lab-com .list-box .list-info-2 div{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 14px;
+        color: #2A3451;
+    }
+    .form-btn-2 {
+        width: 30%;
+        display: block;
+        box-sizing: content-box;
+        margin: 0 auto;
+        padding: 254px 0;
+    }
+    .form-btn-2 button{
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #232D4B;
+    }
+    /*项目详情*/
+    .lab-com-work-2{
+        display: flex;
+    }
+    .lab-com-work-2 .list-name{
+        width: 40%;
+        margin-top: 54px;
+    }
+    .lab-com-work-2 .list-info{
+        width: 60%;
+    }
+    .lab-com-work-2 .list-name .text-info-2 {
+        width: 80%;
+        margin: 15px auto 0;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 20px;
+        color: #4B4B4B;
+    }
+    .lab-com-work-2 .list-name .text-name{
+        width: 80%;
+        margin: 0 auto;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 28px;
+        color: #4B4B4B;
+    }
+    .lab-com-work-2 .list-info{
+        margin-top: 150px;
+    }
+    .lab-com-work-2 .list-info .list-info-box{
+        display: flex;
+    }
+    .lab-com-work-2 .list-info .list-info-box .list-info-title{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 23px;
+        color: #4B4B4B;
+        width: 18%;
+    }
+    .lab-com-work-2 .list-info .list-info-box .info-img {
+        width: 334px;
+        /*height: 194px;*/
+        margin: 0;
+        /*overflow: hidden;*/
+    }
+    .lab-com-work-2 .list-info .list-box-info{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 20px;
+        color: #4B4B4B;
+        margin-top: 22px;
     }
 }

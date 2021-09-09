@@ -4,11 +4,12 @@ window.onload = function (){
         $('collapse .navbar-nav li').removeClass('active');
         $(this).addClass('active');
     });
-    // $('.top-index .collapse .navbar-nav li').click(function(){
-    //     var index = $(this).index();
-    //     $('.top-index .collapse .navbar-nav li a').removeClass('activeSize');
-    //     $(this).addClass('activeSize');
-    // });
+    $('.info-2 .my-info-list .info-left').click(function(){
+        var index = $(this).index();
+        $('.info-2 .my-info-list .info-left').removeClass('active');
+        $(this).addClass('active');
+        console.log(111)
+    });
 }
 window.onresize = function(){
     $('.carousel-top').each(function(){
