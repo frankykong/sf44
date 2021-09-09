@@ -36,7 +36,7 @@ class ArticleListener
 
     public function preUpdate(Article $article, PreUpdateEventArgs $args)
     {
-        if($args->hasChangedField('body'))
+        if( $args->hasChangedField('body') )
         {
 //            $em = $args->getEntityManager();
 //            /** @var AttachmentRepository $attachmentRepository */
@@ -45,7 +45,7 @@ class ArticleListener
             $regex = '~/uploads/[a-zA-Z0-9]+\.\w+~';
             $matches = [];
 
-            if (preg_match_all($regex, $args->getNewValue('body'), $matches) > 0 )
+            if ( preg_match_all($regex, $args->getNewValue('body'), $matches) > 0 )
             {
                 $fileNames = array_map(function ($match){
                     return basename($match);
@@ -53,33 +53,37 @@ class ArticleListener
 
                 $recordsToRemove = $this->attachmentRepository->findAttachmentsToRemove($fileNames, $article->getId());
 
-                $filesNamesToRemove = [];
-                /** @var Attachment $record */
-                foreach ($recordsToRemove as $record)
-                {
-                    $filesNamesToRemove[] = $record->getFileName();
-                    //remove the file from the server
-                    $this->attachmentManager->removeAttachment($record->getFileName());
-                }
                 // remove the record from the db
-                $this->attachmentRepository->removeAttachments($filesNamesToRemove);
-
-            } else if ($article->getAttachments()->count() && $matches) {
-                /** @var Attachment $record */
-                foreach ($article->getAttachments() as $record)
+                if(!empty($recordsToRemove))
                 {
-                    // remove the record from the db
+                    $filesNamesToRemove = [];
+                    /** @var Attachment $record */
+                    foreach ($recordsToRemove as $record)
+                    {
+                        $filesNamesToRemove[] = $record->getFileName();
+                        //remove the file from the server
+                        $this->attachmentManager->removeAttachment( $record->getFileName() );
+                    }
+                    $this->attachmentRepository->removeAttachments($filesNamesToRemove);
+                }
+
+            }
+//            else if ($article->getAttachments()->count() && $matches)
+//            {
+//                /** @var Attachment $record */
+//                foreach ($article->getAttachments() as $record)
+//                {
+//                    // remove the record from the db
 //                    $entity = $this->entityManager->merge($record);
 //                    $this->entityManager->remove($entity);
-                    // remove the file from the server
-                    $this->attachmentManager->removeAttachment($record->getFilename());
-                }
-            }
-            $this->entityManager->flush();
+//                    // remove the file from the server
+//                    $this->attachmentManager->removeAttachment($record->getFilename());
+//                }
+//            }
 
-//            $em->flush();
+            //$this->entityManager->flush();
 
-        };
+        }
     }
 
 }

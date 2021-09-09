@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminMenu.html.twig' %}
 
 {% block title %}Lab{% endblock %}
 
@@ -21,7 +21,7 @@
             </tr>
             <tr>
                 <th>Description</th>
-                <td>{{ lab.description }}</td>
+                <td>{{ lab.description|raw }}</td>
             </tr>
             <tr>
                 <th>CreatedTime</th>

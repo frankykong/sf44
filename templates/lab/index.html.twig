@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminMenu.html.twig' %}
 
 {% block title %}Lab index{% endblock %}
 
@@ -11,7 +11,6 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Identifier</th>
-                <th>Description</th>
                 <th>CreatedTime</th>
                 <th>UpdateTime</th>
                 <th>actions</th>
@@ -23,7 +22,6 @@
                 <td>{{ lab.id }}</td>
                 <td>{{ lab.name }}</td>
                 <td>{{ lab.identifier }}</td>
-                <td>{{ lab.description }}</td>
                 <td>{{ lab.createdTime ? lab.createdTime|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ lab.updateTime ? lab.updateTime|date('Y-m-d H:i:s') : '' }}</td>
                 <td>

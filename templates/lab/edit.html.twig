@@ -1,6 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminMenu.html.twig' %}
 
 {% block title %}Edit Lab{% endblock %}
+
+{% block body_id 'lab_editor' %}
+
+{% block header %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('editor') }}
+{% endblock %}
 
 {% block body %}
     <h1>Edit Lab</h1>

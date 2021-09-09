@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Article;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -23,9 +23,9 @@ class ArticleType extends AbstractType
                     'class' => 'title'
                 ]
             ])
-            ->add('category', EntityType::class, [
-                'class' => 'App\Entity\Category'
-            ] )
+            ->add('category', EntityTreeType::class, [
+                'class' => Category::class
+            ])
             ->add('tagIds')
             ->add('cover_img', FileType::class, [
                 // unmapped means that this field is not associated to any entity property

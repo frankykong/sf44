@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Entity\Article;
 use App\Entity\Attachment;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\ORMException;
@@ -28,22 +27,32 @@ class AttachmentManager
         $this->entityManager = $entityManager;
     }
 
-    public function uploadAttachment(UploadedFile $file, Article $article): array
+    public function uploadAttachment(UploadedFile $file, $className, $id): array
     {
         $fileName = md5(uniqid()) . '.' . $file->guessExtension();
-
 
         $file->move(
             $this->getUploadDir(),
             $fileName
         );
-
         $attachment = new Attachment();
         $attachment->setFileName($fileName);
         $attachment->setPath( '/uploads/' . $fileName);
-        $attachment->setArticle($article);
 
-        $article->addAttachment($attachment);
+        $objectA = $this->entityManager->find($className, $id);
+
+        $type = explode("\\", $className);
+
+        if($type[2] === 'Article' )
+        {
+            $attachment->setArticle($objectA);
+        }
+        else if($type[2] === 'Lab')
+        {
+            $attachment->setLab($objectA);
+        }
+        $attachment->setType($type[2]);
+        $objectA->addAttachment($attachment);
         $this->entityManager->persist($attachment);
         $this->entityManager->flush();
 

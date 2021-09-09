@@ -28,9 +28,20 @@ class Attachment
     private $path;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $type;
+
+    /**
      * @ORM\ManyToOne (targetEntity="App\Entity\Article", inversedBy="attachments")
      */
     private $article;
+
+    /**
+     * @ORM\ManyToOne (targetEntity="App\Entity\Lab", inversedBy="attachments")
+     */
+    private $lab;
+
 
     public function getId(): ?int
     {
@@ -72,4 +83,33 @@ class Attachment
 
         return $this;
     }
+
+    public function getLab(): ?Lab
+    {
+        return $this->lab;
+    }
+
+    public function setLab(?Lab $lab): self
+    {
+        $this->lab = $lab;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type): void
+    {
+        $this->type = $type;
+    }
+
 }

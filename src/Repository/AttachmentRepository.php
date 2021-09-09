@@ -61,7 +61,6 @@ class AttachmentRepository extends ServiceEntityRepository
 
             );
 
-
         return $qb->getQuery()->getResult();
     }
 
@@ -73,6 +72,7 @@ class AttachmentRepository extends ServiceEntityRepository
             ->where(
                 $qb->expr()->In('a.fileName', $fileNames)
             );
+
         return $qb->getQuery()->getResult();
     }
 

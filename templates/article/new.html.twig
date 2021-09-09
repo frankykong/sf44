@@ -2,6 +2,12 @@
 
 {% block title %}New Article{% endblock %}
 
+{% block header %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('article') }}
+{% endblock %}
+
+
 {% block body %}
     <h1>Create new Article</h1>
 

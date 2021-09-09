@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\LabRepository;
 use DateTimeInterface;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use app\Entity\Category;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -56,6 +57,11 @@ class Lab
      * @ORM\Column(type="datetime")
      */
     private $updateTime;
+
+    /**
+     * @ORM\OneToMany (targetEntity="App\Entity\Attachment", mappedBy="lab")
+     */
+    private $attachments;
 
     public function getId(): ?int
     {
@@ -131,6 +137,34 @@ class Lab
     {
         $this->updateTime = $updateTime;
 
+        return $this;
+    }
+
+    /**
+     * @return Collection|Attachment[]
+     */
+    public function getAttachments(): Collection
+    {
+        return $this->attachments;
+    }
+
+    public function addAttachment(Attachment $attachment): self
+    {
+        if (!$this->attachments->contains($attachment)) {
+            $this->attachments[] = $attachment;
+            $attachment->setLab($this);
+        }
+        return $this;
+    }
+
+    public function removeAttachment(Attachment $attachment): self
+    {
+        if ($this->attachments->removeElement($attachment)) {
+            // set the owning side to null (unless already changed)
+            if ($attachment->getLab() === $this) {
+                $attachment->setLab(null);
+            }
+        }
         return $this;
     }
 }

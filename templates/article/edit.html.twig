@@ -2,9 +2,12 @@
 
 {% block title %}Edit Article{% endblock %}
 
+{% block body_id 'article_editor' %}
 
-{% block body_id 'edit_article' %}
-
+{% block header %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('editor') }}
+{% endblock %}
 
 {% block body %}
     <h1>Edit Article</h1>

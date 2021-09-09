@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\Lab;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -15,7 +16,9 @@ class LabType extends AbstractType
             ->add('name')
             ->add('identifier')
             ->add('description')
-            ->add('category')
+            ->add('category', EntityTreeType::class, [
+                'class' => Category::class
+            ])
         ;
     }
 

@@ -83,8 +83,11 @@ class Article
      */
     private $category;
 
-    public function __construct()
+    public function __construct(?int $id)
     {
+        if($id){
+            $this->id =$id;
+        }
         $this->attachments = new ArrayCollection();
     }
 
